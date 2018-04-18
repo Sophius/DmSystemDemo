@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.PaneController">
+  <children>
+    <Button layoutX="107.0" layoutY="87.0" mnemonicParsing="false" onAction="#closeStudents" text="清空学生数据库" />
+    <Button layoutX="107.0" layoutY="130.0" mnemonicParsing="false" onAction="#addStudents" text="增添学生数据" />
+    <Button layoutX="107.0" layoutY="171.0" mnemonicParsing="false" onAction="#deleteStudents" text="删除学生数据" />
+    <Button layoutX="107.0" layoutY="211.0" mnemonicParsing="false" onAction="#amendStudents" text="修改学生数据" />
+    <Button layoutX="107.0" layoutY="250.0" mnemonicParsing="false" onAction="#onBackup" text="备份数据库到F盘根目录" />
+    <Button layoutX="107.0" layoutY="289.0" mnemonicParsing="false" onAction="#checkallStudents" text="显示所有学生数据" />
+    <Button layoutX="107.0" layoutY="331.0" mnemonicParsing="false" onAction="#EXIT" text="退出应用" />
+    <Label layoutX="324.0" layoutY="407.0" text="Designed by 许嘉熙" />
+    <TextField fx:id="result" editable="false" layoutX="269.0" layoutY="97.0" prefWidth="200.0" />
+  </children>
+</AnchorPane>
