@@ -26,6 +26,9 @@ public class PaneController {
 		this.stage = stage;
 	}
 
+	public void init2(PaneController controller, Stage stage){
+		this.stage = stage;
+	}
 
 	@FXML
 	public TextField result;
@@ -157,10 +160,21 @@ public class PaneController {
 
         bt.setOnAction(e -> {
             try {
-                stage.close();
+            	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pane.fxml"));
+        		Parent conRoot = loader.load();
+    			Stage conStage = new Stage();
+
+    			PaneController converController =  loader.getController();
+    			converController.init2(this, conStage);
+
+
+
+    			conStage.setTitle("Con");
+    			conStage.setScene(new Scene(conRoot));
+    			conStage.show();
             }
             catch (Exception ex) {
-                Logger.getLogger(Students.class.getName()).log(Level.SEVERE, null, ex);
+            	ex.printStackTrace();
             }
         });
         Scene scene = new Scene(pane);
