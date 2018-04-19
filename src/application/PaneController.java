@@ -137,8 +137,10 @@ public class PaneController {
         pane.add(new Label("°à¼¶"), 2, 0);
         pane.add(new Label("Ñ§ºÅ"), 3, 0);
         pane.add(new Label("³É¼¨"), 4, 0);
+        pane.add(new Label("È±ÇÚ"), 5, 0);
         Student[] stu = new Student[i];
         Text[][] text = new Text[i][4];
+        Button[] bt1= new Button[i];
         int j;
         try(Scanner Input = new Scanner(fl)){
             for(j =0; j <i;j++){
@@ -148,11 +150,13 @@ public class PaneController {
                 text[j][1] = new Text(stu[j].GetClass());
                 text[j][2] = new Text(stu[j].GetNumber());
                 text[j][3] = new Text("" + stu[j].GetScore());
+                bt1[j]=new Button("È±ÇÚ");
                 pane.add(new Label("" + j + 1), 0, j + 1);
                 pane.add(text[j][0], 1, j + 1);
                 pane.add(text[j][1], 2, j + 1);
                 pane.add(text[j][2], 3, j + 1);
                 pane.add(text[j][3], 4, j + 1);
+                pane.add(bt1[j],5,j + 1);
             }
         }
         Button bt = new Button("out");

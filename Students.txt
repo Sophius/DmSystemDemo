@@ -1,1 +1,2 @@
-	user	pass
+	aaa	123	123	0
+	bbb	123	222	0
