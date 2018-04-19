@@ -62,12 +62,14 @@ public class AddController {
         try(Scanner Input = new Scanner(fl)){
             for(j =0; j < i;j++){
                 stu[j] = new Student(Input.next(), Input.next(),
-                        Input.next(), Input.nextInt());
+                        Input.next(), Input.nextInt(),Input.nextInt());
                 if(Number.compareTo(stu[j].GetNumber()) == 0){
                     Text text1 = new Text(100, 50, "name:\t" + stu[j].GetName());
                     Text text2 = new Text(100, 80, "class:\t" + stu[j].GetClass());
                     Text text3 = new Text(100, 120, "Number:\t" + stu[j].GetNumber());
-                    Text text4 = new Text(100, 150, "grade:\t" + stu[j].GetScore());
+                    Text text4 = new Text(100, 150, "score:\t" + stu[j].GetScore());
+                    Text text5 = new Text(100, 180, "absent:\t" + stu[j].GetAbsent());
+
 
                     Button bt1 = new Button("删除");
                     Button bt2 = new Button("退出");
@@ -76,7 +78,7 @@ public class AddController {
                     bt2.setLayoutX(200);
                     bt2.setLayoutY(180);
                     Pane pane = new Pane();
-                    pane.getChildren().addAll(text1, text2, text3, text4, bt1, bt2);
+                    pane.getChildren().addAll(text1, text2, text3, text4,text5, bt1, bt2);
                     Scene scene = new Scene(pane, 350, 280);
                     stage.setScene(scene);
 
@@ -146,7 +148,7 @@ public class AddController {
         try(Scanner Input = new Scanner(fl)){
             for(int j =0; j < i;j++){
                 stu[j] = new Student(Input.next(), Input.next(),
-                        Input.next(), Input.nextInt());
+                        Input.next(), Input.nextInt(),Input.nextInt());
                 if(Number.compareTo(stu[j].GetNumber()) == 0){//确定删除则用下一组数据，将要删除的数据覆盖
                     i --;
                     j --;
@@ -168,7 +170,8 @@ public class AddController {
                     output.print(stu[j].GetName() + "\t");
                     output.print(stu[j].GetNumber() + "\t");
                     output.print(stu[j].GetClass() + "\t");
-                    output.println(stu[j].GetScore());
+                    output.print(stu[j].GetScore()+ "\t");
+                    output.println(stu[j].GetAbsent());
                 }
             }
         }
@@ -180,7 +183,7 @@ public class AddController {
 	private void addStudents(ActionEvent event) throws IOException {
 
 		Student stu = new Student(setName.getText(), setClass.getText(),
-                setNumber.getText(), Integer.parseInt(setGrade.getText()));//使用自定义的类暂时储存数据
+                setNumber.getText(), Integer.parseInt(setGrade.getText()),0);//使用自定义的类暂时储存数据
 
       File Fl = new File("Number.txt");
       try (Scanner input = new Scanner(Fl)) {
@@ -195,7 +198,8 @@ public class AddController {
            out.write(stu.GetName() + "\t");
            out.write(stu.GetClass() + "\t");
            out.write(stu.GetNumber() + "\t");
-           out.write(stu.GetScore() + "\n");
+           out.write(stu.GetScore() + "\t");
+           out.write(stu.GetAbsent() + "\n");
        }
 
        i++;
@@ -220,13 +224,14 @@ public class AddController {
         try(Scanner Input = new Scanner(fl)){
             for(j =0; j < i;j++){
                 stu[j] = new Student(Input.next(), Input.next(),
-                        Input.next(), Input.nextInt());
+                        Input.next(), Input.nextInt(),Input.nextInt());
                 if(Number.compareTo(stu[j].GetNumber()) == 0){
 
                     Text text1 = new Text(100, 50, "姓名:\t" + stu[j].GetName());
                     Text text2 = new Text(100, 80, "班级:\t" + stu[j].GetClass());
                     Text text3 = new Text(100, 120, "学号:\t" + stu[j].GetNumber());
                     Text text4 = new Text(100, 150, "成绩:\t" + stu[j].GetScore());
+                    Text text5 = new Text(100, 180, "缺席:\t" + stu[j].GetAbsent());
 
                     Button bt1 = new Button("修改");
                     Button bt2 = new Button("退出");
@@ -235,17 +240,17 @@ public class AddController {
                     bt2.setLayoutX(200);
                     bt2.setLayoutY(180);
                     Pane pane = new Pane();
-                    pane.getChildren().addAll(text1, text2, text3, text4, bt1, bt2);
+                    pane.getChildren().addAll(text1, text2, text3, text4,text5, bt1, bt2);
                     Scene scene = new Scene(pane, 350, 280);
                     stage.setScene(scene);
 
-                    bt1.setOnAction(e -> amend());
+                    bt1.setOnAction(e -> amend(Number));
                     bt2.setOnAction(e -> {
                         try {
                             stage.close();
                         }
                         catch (Exception ex) {
-                            Logger.getLogger(Students.class.getName()).log(Level.SEVERE, null, ex);
+                        	 Logger.getLogger(AddController.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     });
                     break;
@@ -272,19 +277,20 @@ public class AddController {
                         stage.close();
                     }
                     catch (Exception ex) {
-                        Logger.getLogger(Students.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    	 Logger.getLogger(AddController.class.getName()).log(Level.SEVERE, null, ex);
+                    	 }
                 });
             }
         }
 	}
 
 	@FXML
-	private void amend() {//修改学生3
+	private void amend(String Number) {//修改学生3
         TextField newName = new TextField();
         TextField newClass = new TextField();
         TextField newNumber = new TextField();
         TextField newGrade = new TextField();
+        TextField newAbsent = new TextField();
 
         Button bt = new Button("OK");
         GridPane pane = new GridPane();
@@ -299,7 +305,9 @@ public class AddController {
         pane.add(newNumber, 1, 3);
         pane.add(new Label("new 成绩："), 0, 4);
         pane.add(newGrade, 1, 4);
-        pane.add(bt, 1, 5);
+        pane.add(new Label("new 缺席："), 0, 5);
+        pane.add(newAbsent, 1, 5);
+        pane.add(bt, 1, 6);
 
         Scene scene = new Scene(pane);
         stage.setScene(scene);
@@ -307,35 +315,35 @@ public class AddController {
         bt.setOnAction(e -> {
             try {
                 Amend(newName, newClass,
-                        newNumber, newGrade);
+                        newNumber, newGrade,newAbsent,Number);
             }
             catch (FileNotFoundException ex) {
-                Logger.getLogger(Students.class.getName()).log(Level.SEVERE, null, ex);
+            	 Logger.getLogger(AddController.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Exception ex) {
-                Logger.getLogger(Students.class.getName()).log(Level.SEVERE, null, ex);
+            	 Logger.getLogger(AddController.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
 
 
 	private void Amend(TextField newName, TextField newClass, TextField newNumber,
-            TextField newGrade) throws FileNotFoundException, Exception {//修改学生4
+            TextField newGrade,TextField newAbsent, String Number) throws FileNotFoundException, Exception {//修改学生4
         File Fl = new File("Number.txt");
         File fl = new File("Students.txt");
         try (Scanner input = new Scanner(Fl)) {
             i = input.nextInt();
         }
 
-        String Number = setNumber.getText();
+
 
         Student[] stu = new Student[i];
         try(Scanner Input = new Scanner(fl)){
             for(int j =0; j < i;j++){
                 stu[j] = new Student(Input.next(), Input.next(),
-                        Input.next(), Input.nextInt());
+                        Input.next(), Input.nextInt(),Input.nextInt());
                 if(Number.compareTo(stu[j].GetNumber()) == 0){
                     stu[j] = new Student(newName.getText(), newClass.getText(),
-                 newNumber.getText(), Integer.parseInt(newGrade.getText()));
+                 newNumber.getText(), Integer.parseInt(newGrade.getText()),Integer.parseInt(newAbsent.getText()));
                 }
             }
         }
@@ -354,12 +362,14 @@ public class AddController {
                     output.print(stu[j].GetName() + "\t");
                     output.print(stu[j].GetNumber() + "\t");
                     output.print(stu[j].GetClass() + "\t");
-                    output.println(stu[j].GetScore());
+                    output.print(stu[j].GetScore() + "\t");
+                    output.println(stu[j].GetAbsent());
                 }
             }
         }
         stage.close();
     }
+
 
 
 

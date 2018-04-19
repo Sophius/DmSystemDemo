@@ -5,21 +5,18 @@ public class Student {
     private String Number;
     private String Class;
     private int Score;
+    private int Absent;
 
 
-    public Student(){
-        this("sdiuf h","6544534","ef esf",48);
-    }
 
-    public Student(String Name,String Number,String Class){
-        this(Name,Number,Class,0);
-    }
 
-    public Student(String Name,String Class,String Number,int Score){
+
+    public Student(String Name,String Class,String Number,int Score, int Absent){
         this.Name = Name;
         this.Number = Number;
         this.Score = Score;
         this.Class = Class;
+        this.Absent= Absent;
     }
 
     public void SetName(String Name){
@@ -38,6 +35,9 @@ public class Student {
         this.Score = Score;
     }
 
+    public void SetAbsent(int Absent){
+    	 this.Absent= Absent;
+    }
     public String GetName(){
         return Name;
     }
@@ -52,5 +52,9 @@ public class Student {
 
     public int GetScore(){
         return Score;
+    }
+
+    public int GetAbsent(){
+        return Absent;
     }
 }
