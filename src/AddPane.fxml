@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.AddController">
+<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddController">
    <children>
       <Label layoutX="71.0" layoutY="106.0" text="姓名" />
       <Label layoutX="71.0" layoutY="168.0" text="班级" />
@@ -18,5 +18,6 @@
       <TextField fx:id="setNumber" layoutX="220.0" layoutY="231.0" />
       <TextField fx:id="setGrade" layoutX="220.0" layoutY="301.0" />
       <Button layoutX="212.0" layoutY="397.0" mnemonicParsing="false" onAction="#addStudents" text="OK" />
+      <Label fx:id="wr1Lab" layoutX="246.0" layoutY="347.0" textFill="#e10e0e" />
    </children>
 </AnchorPane>

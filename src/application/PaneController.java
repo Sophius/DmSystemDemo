@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.channels.FileChannel;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,6 +19,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -33,7 +37,7 @@ public class PaneController {
 
 	static int i = 0;
 	@FXML
-	public TextField result;
+	public Label result;
 
 
 	@FXML
@@ -221,17 +225,16 @@ public class PaneController {
 	}
 
 	public  void copyfile(File oldfile,File newfile) throws IOException{
-		//复制文件
-		FileInputStream ins = new FileInputStream(oldfile);
-		FileOutputStream out = new FileOutputStream(newfile);
-		//自定义缓冲对象
-		byte[] b = new byte[1024];
-		int n=0;
-		while((n=ins.read(b))!=-1){
-		out.write(b, 0, b.length);
-		}
-		ins.close();
-		out.close();
+		FileChannel inputChannel = null;
+        FileChannel outputChannel = null;
+    try {
+        inputChannel = new FileInputStream(oldfile).getChannel();
+        outputChannel = new FileOutputStream(newfile).getChannel();
+        outputChannel.transferFrom(inputChannel, 0, inputChannel.size());
+    } finally {
+        inputChannel.close();
+        outputChannel.close();
+    }
 
 		result.setText("备份成功");
 		;
@@ -279,5 +282,86 @@ public class PaneController {
         }
 
     }
+	@FXML
+	private void onRepair(){
+		Pane pane = new Pane();
+        Text text = new Text(200, 200, "你确定要还原所有数据！");
+        text.setFill(Color.RED);
+        text.setFont(Font.font(20));//定义字体大小
+
+
+        Button bt1 = new Button("Ok");
+        Button bt2 = new Button("no");
+        bt1.setLayoutX(200);
+        bt1.setLayoutY(230);
+        bt2.setLayoutX(350);
+        bt2.setLayoutY(230);
+
+        pane.getChildren().addAll(text, bt1, bt2);
+        Scene scene = new Scene(pane);
+        stage.setScene(scene);
+
+        bt1.setOnAction(e -> {
+            try {
+            	File oldf=new File("F:\\StudentsBackup.txt");
+        		File newf=new File("Students.txt");//新文件路径（注意要用 \\来代替\，转义字符）
+        		File oldf2=new File("F:\\NumberBackup.txt");
+        		File newf2=new File("Number.txt");//新文件路径（注意要用 \\来代替\，转义字符）
+        		copyfile(oldf,newf);;
+        		copyfile(oldf2,newf2);;
+
+
+        		Text text2 = new Text(100, 100, "程序已将数据还原！");
+                Button bt3 = new Button("确定");
+
+                bt3.setLayoutX(130);
+                bt3.setLayoutY(130);
+
+
+                Pane pane2 = new Pane();
+                pane2.getChildren().addAll(text2, bt3);
+                Scene scene2 = new Scene(pane2,350, 300);
+
+                stage.setScene(scene2);
+                bt3.setOnAction(ex -> {stage.close();
+                BackToPane();
+                });
+
+            }
+
+
+            catch (FileNotFoundException ex) {
+            	Logger.getLogger(PaneController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+        });
+
+        bt2.setOnAction(e -> {
+        	BackToPane();
+            stage.close();
+        });
+	}
+
+	private void BackToPane(){
+		try {
+        	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pane.fxml"));
+    		Parent conRoot = loader.load();
+			Stage conStage = new Stage();
+
+			PaneController converController =  loader.getController();
+			converController.init2(this, conStage);
+
+
+
+			conStage.setTitle("Con");
+			conStage.setScene(new Scene(conRoot));
+			conStage.show();
+        }
+        catch (Exception ex) {
+        	ex.printStackTrace();
+        }
+	}
 
 }
