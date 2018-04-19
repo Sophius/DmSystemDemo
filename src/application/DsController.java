@@ -102,11 +102,11 @@ public class DsController {
 
     private void signup() {
     	try {
-    		FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pane.fxml"));
+    		FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menu.fxml"));
     		Parent conRoot = loader.load();
 			Stage conStage = new Stage();
 
-			PaneController converController =  loader.getController();
+			MenuController converController =  loader.getController();
 			converController.init(this, conStage);
 
 

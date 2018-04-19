@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/src/application/AddController.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/application/CloseController.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/application/DsController.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/application/PaneController.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/application/Students.java" charset="GBK" />
   </component>
