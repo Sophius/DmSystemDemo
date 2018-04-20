@@ -4,6 +4,8 @@
     <file url="file://$PROJECT_DIR$/Students.txt" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/application/AddController.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/application/CloseController.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/application/DmMain.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/application/DmMenu.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/application/DsController.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/application/MenuController.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/application/PaneController.java" charset="GBK" />

@@ -37,7 +37,7 @@ public class DsController {
 
 	private Stage stage;
 
-	public void init(DsController controller, Stage stage){
+	public void init(MenuController controller, Stage stage){
 		this.stage = stage;
 	}
 
