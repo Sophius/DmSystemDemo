@@ -67,7 +67,22 @@ public class MenuController {
     }
     @FXML
 
-	private void dmBtn() throws FileNotFoundException {//显示所有学生数据
+	public void dmBtn() throws FileNotFoundException {
+        try {//显示所有学生数据
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/DmPage.fxml"));
+            Parent conRoot = loader.load();
+            Stage conStage = new Stage();
+
+            DmMenu converController = loader.getController();
+            converController.init(this, conStage);
+            conStage.setTitle("点名！");
+            conStage.setScene(new Scene(conRoot));
+            conStage.show();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+/**
         int i = 0;
 		File Fl = new File("Number.txt");
         File fl = new File("Students.txt");
@@ -136,7 +151,9 @@ public class MenuController {
         });
         Scene scene = new Scene(pane);
         stage.setScene(scene);
+*/
     }
+
     @FXML
     private void manageBtn(){
         try {
@@ -144,7 +161,7 @@ public class MenuController {
             Parent conRoot = loader.load();
             Stage conStage = new Stage();
 
-            PaneController converController =  loader.getController();
+            DmMenu converController =  loader.getController();
             converController.init(this, conStage);
 
 
@@ -158,7 +175,7 @@ public class MenuController {
         }
     }
 
-    private void onAbsent(String Number) throws FileNotFoundException, Exception {//修改学生4
+    public static void onAbsent(String Number) throws FileNotFoundException, Exception {//修改学生4
         int i =0;
     	File Fl = new File("Number.txt");
         File fl = new File("Students.txt");
