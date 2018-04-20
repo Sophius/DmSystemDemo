@@ -32,6 +32,10 @@ public class AddController {
 		this.stage = stage;
 	}
 
+	public void init2(MenuController controller, Stage stage){
+		this.stage = stage;
+	}
+
 
 	@FXML
 	private TextField setName;
@@ -214,6 +218,7 @@ public class AddController {
 
 	@FXML
 	private void onAmend()throws FileNotFoundException{
+		int i = 0;
 		File Fl = new File("Number.txt");
         File fl = new File("Students.txt");
         try (Scanner input = new Scanner(Fl)) {
@@ -222,69 +227,69 @@ public class AddController {
 
         String Number = setNumber.getText();
 
+        GridPane pane = new GridPane();
+        pane.setHgap(20);
+        pane.setVgap(10);
+
+        pane.add(new Label("次序") , 0, 0);
+        pane.add(new Label("姓名"), 1, 0);
+        pane.add(new Label("班级"), 2, 0);
+        pane.add(new Label("学号"), 3, 0);
+        pane.add(new Label("成绩"), 4, 0);
+        pane.add(new Label("修改选项"), 5, 0);
+        pane.add(new Label("缺勤次数"), 6, 0);
         Student[] stu = new Student[i];
+        Text[][] text = new Text[i][5];
+        Button[] bt1= new Button[i];
         int j;
+        int n=0;
+        String[] Num=new String[i];//新建数组储存学号（j会销毁不能在onAbsent（）直接用）
         try(Scanner Input = new Scanner(fl)){
-            for(j =0; j < i;j++){
+
+            for(j =0; j <i;j++){
                 stu[j] = new Student(Input.next(), Input.next(),
                         Input.next(), Input.nextInt(),Input.nextInt());
-                if(Number.compareTo(stu[j].GetNumber()) == 0){
+                if(stu[j].GetNumber().indexOf(Number) != -1){
+                text[n][0] = new Text(stu[j].GetName());
+                text[n][1] = new Text(stu[j].GetClass());
+                text[n][2] = new Text(stu[j].GetNumber());
+                text[n][3] = new Text("" + stu[j].GetScore());
+                text[n][4] = new Text("" + stu[j].GetAbsent());
+                bt1[n]=new Button("修改");
+                pane.add(new Label("" + n + 1), 0, n + 1);
+                pane.add(text[n][0], 1, n + 1);
+                pane.add(text[n][1], 2, n + 1);
+                pane.add(text[n][2], 3, n + 1);
+                pane.add(text[n][3], 4, n + 1);
+                pane.add(bt1[n],5,n + 1);
+                pane.add(text[n][4], 6, n + 1);
+                int k = j;
+                Num[k] = stu[j].GetNumber();
+                bt1[n].setOnAction(e -> {
+                	try {
+                		amend(Num[k]);
 
-                    Text text1 = new Text(100, 50, "姓名:\t" + stu[j].GetName());
-                    Text text2 = new Text(100, 80, "班级:\t" + stu[j].GetClass());
-                    Text text3 = new Text(100, 120, "学号:\t" + stu[j].GetNumber());
-                    Text text4 = new Text(100, 150, "成绩:\t" + stu[j].GetScore());
-                    Text text5 = new Text(100, 180, "缺席:\t" + stu[j].GetAbsent());
 
-                    Button bt1 = new Button("修改");
-                    Button bt2 = new Button("退出");
-                    bt1.setLayoutX(100);
-                    bt1.setLayoutY(180);
-                    bt2.setLayoutX(200);
-                    bt2.setLayoutY(180);
-                    Pane pane = new Pane();
-                    pane.getChildren().addAll(text1, text2, text3, text4,text5, bt1, bt2);
-                    Scene scene = new Scene(pane, 350, 280);
-                    stage.setScene(scene);
-
-                    bt1.setOnAction(e -> amend(Number));
-                    bt2.setOnAction(e -> {
-                        try {
-                            stage.close();
-                        }
-                        catch (Exception ex) {
-                        	 Logger.getLogger(AddController.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-                    });
-                    break;
+        			} catch (Exception e1) {
+        				// TODO Auto-generated catch block
+        				e1.printStackTrace();
+        			}
+                });
+                n++;
                 }
             }
-
-            if(j == i ){
-                Text text = new Text(100, 100, "No fond this person!");
-                text.setFill(Color.RED);
-
-                Button bt2 = new Button("out");
-
-                bt2.setLayoutX(200);
-                bt2.setLayoutY(130);
-                Pane pane = new Pane();
-                pane.getChildren().addAll(text,  bt2);
-
-                Scene scene = new Scene(pane, 350, 250);
-                stage.setScene(scene);
-
-
-                bt2.setOnAction(e -> {
-                    try {
-                        stage.close();
-                    }
-                    catch (Exception ex) {
-                    	 Logger.getLogger(AddController.class.getName()).log(Level.SEVERE, null, ex);
-                    	 }
-                });
-            }
         }
+        Button bt = new Button("out");
+        pane.add(bt, 2, j + 1);
+
+
+
+        bt.setOnAction(e -> {
+
+        	stage.close();
+        });
+        Scene scene = new Scene(pane);
+        stage.setScene(scene);
 	}
 
 	@FXML
@@ -363,8 +368,8 @@ public class AddController {
             try (PrintWriter output = new PrintWriter(fl)) {
                 for(int j = 0;j < i;j ++){
                     output.print(stu[j].GetName() + "\t");
-                    output.print(stu[j].GetNumber() + "\t");
                     output.print(stu[j].GetClass() + "\t");
+                    output.print(stu[j].GetNumber() + "\t");
                     output.print(stu[j].GetScore() + "\t");
                     output.println(stu[j].GetAbsent());
                 }
@@ -373,6 +378,157 @@ public class AddController {
         stage.close();
     }
 
+	@FXML
+	private void onCheck1()throws FileNotFoundException{//已弃用，只能显示一个学生
+		File Fl = new File("Number.txt");
+        File fl = new File("Students.txt");
+        try (Scanner input = new Scanner(Fl)) {
+            i = input.nextInt();
+        }
+
+        String Number = setNumber.getText();
+
+        Student[] stu = new Student[i];
+        int j;
+        try(Scanner Input = new Scanner(fl)){
+            for(j =0; j < i;j++){
+                stu[j] = new Student(Input.next(), Input.next(),
+                        Input.next(), Input.nextInt(),Input.nextInt());
+                if(stu[j].GetNumber().indexOf(Number) != -1){
+
+                    Text text1 = new Text(100, 50, "姓名:\t" + stu[j].GetName());
+                    Text text2 = new Text(100, 80, "班级:\t" + stu[j].GetClass());
+                    Text text3 = new Text(100, 120, "学号:\t" + stu[j].GetNumber());
+                    Text text4 = new Text(100, 150, "成绩:\t" + stu[j].GetScore());
+                    Text text5 = new Text(100, 180, "缺席:\t" + stu[j].GetAbsent());
+
+                    Button bt1 = new Button("修改");
+                    Button bt2 = new Button("退出");
+                    bt1.setLayoutX(100);
+                    bt1.setLayoutY(180);
+                    bt2.setLayoutX(200);
+                    bt2.setLayoutY(180);
+                    Pane pane = new Pane();
+                    pane.getChildren().addAll(text1, text2, text3, text4,text5, bt1, bt2);
+                    Scene scene = new Scene(pane, 350, 280);
+                    stage.setScene(scene);
+
+                    bt1.setOnAction(e -> amend(Number));
+                    bt2.setOnAction(e -> {
+                        try {
+                            stage.close();
+                        }
+                        catch (Exception ex) {
+                        	 Logger.getLogger(AddController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    });
+                    break;
+                }
+            }
+
+            if(j == i ){
+                Text text = new Text(100, 100, "No fond this person!");
+                text.setFill(Color.RED);
+
+                Button bt2 = new Button("out");
+
+                bt2.setLayoutX(200);
+                bt2.setLayoutY(130);
+                Pane pane = new Pane();
+                pane.getChildren().addAll(text,  bt2);
+
+                Scene scene = new Scene(pane, 350, 250);
+                stage.setScene(scene);
+
+
+                bt2.setOnAction(e -> {
+                    try {
+                        stage.close();
+                    }
+                    catch (Exception ex) {
+                    	 Logger.getLogger(AddController.class.getName()).log(Level.SEVERE, null, ex);
+                    	 }
+                });
+            }
+        }
+	}
+
+	@FXML
+
+	private void onCheck() throws FileNotFoundException {//显示所有含所输入学号的所有学生数据
+        int i = 0;
+		File Fl = new File("Number.txt");
+        File fl = new File("Students.txt");
+        try (Scanner input = new Scanner(Fl)) {
+            i = input.nextInt();
+        }
+
+        String Number = setNumber.getText();
+
+        GridPane pane = new GridPane();
+        pane.setHgap(20);
+        pane.setVgap(10);
+
+        pane.add(new Label("次序") , 0, 0);
+        pane.add(new Label("姓名"), 1, 0);
+        pane.add(new Label("班级"), 2, 0);
+        pane.add(new Label("学号"), 3, 0);
+        pane.add(new Label("成绩"), 4, 0);
+        pane.add(new Label("修改选项"), 5, 0);
+        pane.add(new Label("缺勤次数"), 6, 0);
+        Student[] stu = new Student[i];
+        Text[][] text = new Text[i][5];
+        Button[] bt1= new Button[i];
+        int j;
+        int n=0;
+        String[] Num=new String[i];//新建数组储存学号（j会销毁不能在onAbsent（）直接用）
+        try(Scanner Input = new Scanner(fl)){
+
+            for(j =0; j <i;j++){
+                stu[j] = new Student(Input.next(), Input.next(),
+                        Input.next(), Input.nextInt(),Input.nextInt());
+                if(stu[j].GetNumber().indexOf(Number) != -1){
+                text[n][0] = new Text(stu[j].GetName());
+                text[n][1] = new Text(stu[j].GetClass());
+                text[n][2] = new Text(stu[j].GetNumber());
+                text[n][3] = new Text("" + stu[j].GetScore());
+                text[n][4] = new Text("" + stu[j].GetAbsent());
+                bt1[n]=new Button("修改");
+                pane.add(new Label("" + n + 1), 0, n + 1);
+                pane.add(text[n][0], 1, n + 1);
+                pane.add(text[n][1], 2, n + 1);
+                pane.add(text[n][2], 3, n + 1);
+                pane.add(text[n][3], 4, n + 1);
+                pane.add(bt1[n],5,n + 1);
+                pane.add(text[n][4], 6, n + 1);
+                int k = j;
+                Num[k] = stu[j].GetNumber();
+                bt1[n].setOnAction(e -> {
+                	try {
+                		amend(Num[k]);
+
+
+        			} catch (Exception e1) {
+        				// TODO Auto-generated catch block
+        				e1.printStackTrace();
+        			}
+                });
+                n++;
+                }
+            }
+        }
+        Button bt = new Button("out");
+        pane.add(bt, 2, j + 1);
+
+
+
+        bt.setOnAction(e -> {
+
+        	stage.close();
+        });
+        Scene scene = new Scene(pane);
+        stage.setScene(scene);
+    }
 
 
 
