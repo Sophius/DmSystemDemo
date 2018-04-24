@@ -2,6 +2,7 @@ package application;
 
 public class Teacher {
 
+	//建立教师类，属性为用户名及密码
 	private String Username;
 	private String Password;
 

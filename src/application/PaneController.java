@@ -25,7 +25,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class PaneController {
+public class PaneController {//管理系统面板
 	private Stage stage;
 	public void init(MenuController controller, Stage stage){
 		this.stage = stage;
@@ -145,9 +145,13 @@ public class PaneController {
         pane.add(new Label("成绩"), 4, 0);
         pane.add(new Label("缺勤选项"), 5, 0);
         pane.add(new Label("缺勤次数"), 6, 0);
+        pane.add(new Label("加分按钮"), 7, 0);
+        pane.add(new Label("扣分按钮"), 8, 0);
         Student[] stu = new Student[i];
         Text[][] text = new Text[i][5];
         Button[] bt1= new Button[i];
+        Button[] bt2= new Button[i];
+        Button[] bt3= new Button[i];
         int j;
         String[] Num=new String[i];//新建数组储存学号（j会销毁不能在onAbsent（）直接用）
         try(Scanner Input = new Scanner(fl)){
@@ -161,6 +165,8 @@ public class PaneController {
                 text[j][3] = new Text("" + stu[j].GetScore());
                 text[j][4] = new Text("" + stu[j].GetAbsent());
                 bt1[j]=new Button("缺勤");
+                bt2[j]=new Button("+1");
+                bt3[j]=new Button("-1");
                 pane.add(new Label("" + j + 1), 0, j + 1);
                 pane.add(text[j][0], 1, j + 1);
                 pane.add(text[j][1], 2, j + 1);
@@ -168,11 +174,37 @@ public class PaneController {
                 pane.add(text[j][3], 4, j + 1);
                 pane.add(bt1[j],5,j + 1);
                 pane.add(text[j][4], 6, j + 1);
+                pane.add(bt2[j],7,j + 1);
+                pane.add(bt3[j],8,j + 1);
                 int k = j;
                 Num[k] = stu[j].GetNumber();
                 bt1[j].setOnAction(e -> {
                 	try {
                 		onAbsent(Num[k]);
+        				checkallStudents();
+        			} catch (FileNotFoundException e1) {
+        				// TODO Auto-generated catch block
+        				e1.printStackTrace();
+        			} catch (Exception e1) {
+        				// TODO Auto-generated catch block
+        				e1.printStackTrace();
+        			}
+                });
+                bt2[j].setOnAction(e -> {
+                	try {
+                		onPlus(Num[k]);
+        				checkallStudents();
+        			} catch (FileNotFoundException e1) {
+        				// TODO Auto-generated catch block
+        				e1.printStackTrace();
+        			} catch (Exception e1) {
+        				// TODO Auto-generated catch block
+        				e1.printStackTrace();
+        			}
+                });
+                bt3[j].setOnAction(e -> {
+                	try {
+                		onSubtract(Num[k]);
         				checkallStudents();
         			} catch (FileNotFoundException e1) {
         				// TODO Auto-generated catch block
@@ -224,7 +256,8 @@ public class PaneController {
 
 	}
 
-	public  void copyfile(File oldfile,File newfile) throws IOException{
+	@SuppressWarnings("resource")
+	public  void copyfile(File oldfile,File newfile) throws IOException{//从stream处理改为了Channel处理，去除冗余空字节。
 		FileChannel inputChannel = null;
         FileChannel outputChannel = null;
     try {
@@ -240,7 +273,7 @@ public class PaneController {
 		;
 
 		}
-	private void onAbsent(String Number) throws FileNotFoundException, Exception {//修改学生4
+	private void onAbsent(String Number) throws FileNotFoundException, Exception {//缺勤次数+1
         File Fl = new File("Number.txt");
         File fl = new File("Students.txt");
         try (Scanner input = new Scanner(Fl)) {
@@ -282,8 +315,96 @@ public class PaneController {
         }
 
     }
+
+	void onPlus(String Number) throws FileNotFoundException, Exception {//加一分
+        File Fl = new File("Number.txt");
+        File fl = new File("Students.txt");
+        try (Scanner input = new Scanner(Fl)) {
+            i = input.nextInt();
+        }
+
+
+
+        Student[] stu = new Student[i];
+        try(Scanner Input = new Scanner(fl)){
+            for(int j =0; j < i;j++){
+                stu[j] = new Student(Input.next(), Input.next(),
+                        Input.next(), Input.nextInt(),Input.nextInt());
+                if(Number.compareTo(stu[j].GetNumber()) == 0){
+                    stu[j] = new Student(stu[j].GetName(), stu[j].GetClass(),
+                    		stu[j].GetNumber(), (stu[j].GetScore()+1),(stu[j].GetAbsent()));
+                }
+            }
+        }
+
+        try(PrintWriter output = new PrintWriter(Fl)){
+            output.print(i);
+        }
+
+        if(i == 0){
+            try (PrintWriter output = new PrintWriter(fl)) {
+            }
+        }
+        else{
+            try (PrintWriter output = new PrintWriter(fl)) {
+                for(int j = 0;j < i;j ++){
+                    output.print(stu[j].GetName() + "\t");
+                    output.print(stu[j].GetClass() + "\t");
+                    output.print(stu[j].GetNumber() + "\t");
+                    output.print(stu[j].GetScore() + "\t");
+                    output.println(stu[j].GetAbsent());
+                }
+            }
+        }
+
+    }
+
+	void onSubtract(String Number) throws FileNotFoundException, Exception {//扣一分
+        File Fl = new File("Number.txt");
+        File fl = new File("Students.txt");
+        try (Scanner input = new Scanner(Fl)) {
+            i = input.nextInt();
+        }
+
+
+
+        Student[] stu = new Student[i];
+        try(Scanner Input = new Scanner(fl)){
+            for(int j =0; j < i;j++){
+                stu[j] = new Student(Input.next(), Input.next(),
+                        Input.next(), Input.nextInt(),Input.nextInt());
+                if(Number.compareTo(stu[j].GetNumber()) == 0){
+                    stu[j] = new Student(stu[j].GetName(), stu[j].GetClass(),
+                    		stu[j].GetNumber(), (stu[j].GetScore()-1),(stu[j].GetAbsent()));
+                }
+            }
+        }
+
+        try(PrintWriter output = new PrintWriter(Fl)){
+            output.print(i);
+        }
+
+        if(i == 0){
+            try (PrintWriter output = new PrintWriter(fl)) {
+            }
+        }
+        else{
+            try (PrintWriter output = new PrintWriter(fl)) {
+                for(int j = 0;j < i;j ++){
+                    output.print(stu[j].GetName() + "\t");
+                    output.print(stu[j].GetClass() + "\t");
+                    output.print(stu[j].GetNumber() + "\t");
+                    output.print(stu[j].GetScore() + "\t");
+                    output.println(stu[j].GetAbsent());
+                }
+            }
+        }
+
+    }
+
+
 	@FXML
-	private void onRepair(){
+	private void onRepair(){//从F盘根目录的备份恢复
 		Pane pane = new Pane();
         Text text = new Text(200, 200, "你确定要还原所有数据！");
         text.setFill(Color.RED);
@@ -344,7 +465,7 @@ public class PaneController {
         });
 	}
 
-	private void BackToPane(){
+	private void BackToPane(){//回到管理菜单
 		try {
         	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pane.fxml"));
     		Parent conRoot = loader.load();

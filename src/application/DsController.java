@@ -22,7 +22,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class DsController {
+public class DsController {//×¢²áµÇÂ¼Ò³Ãæ
 	@FXML
     private Button showBtn;
 	@FXML

@@ -1,6 +1,7 @@
 package application;
 
 public class Student {
+	//建立学生类，包含属性姓名、班级、学号、成绩、缺席次数和序号。（序号本来打算用于随机点名，后用数组形式实现）
 	private String Name;
     private String Number;
     private String Class;

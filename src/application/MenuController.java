@@ -35,7 +35,7 @@ public class MenuController {
 
     public void init2(MenuController controller, Stage stage){
 		this.stage = stage;
-	}
+	}																		//用于窗口转换
 
     @FXML
     private Button checkInfo;
@@ -47,6 +47,7 @@ public class MenuController {
     private Button dm;
     @FXML
     private void checkBtn(){
+    	//进入查询学生信息面板
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/CheckPane.fxml"));
             Parent conRoot = loader.load();
@@ -57,7 +58,7 @@ public class MenuController {
 
 
 
-            conStage.setTitle("hei");
+            conStage.setTitle("查询");
             conStage.setScene(new Scene(conRoot));
             conStage.show();
 
@@ -68,10 +69,52 @@ public class MenuController {
     @FXML
 
 	public void dmBtn() throws FileNotFoundException {
+<<<<<<< HEAD
+        try {//进入点名面板
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/DmPage.fxml"));
+            Parent conRoot = loader.load();
+            Stage conStage = new Stage();
+
+            DmMenu converController = loader.getController();
+            converController.init(this, conStage);
+            conStage.setTitle("点名方式");
+            conStage.setScene(new Scene(conRoot));
+            conStage.show();
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+/**   //此处是原本没做随机点名时的顺序点名代码
+        int i = 0;
+		File Fl = new File("Number.txt");
+        File fl = new File("Students.txt");
+        try (Scanner input = new Scanner(Fl)) {
+            i = input.nextInt();
+        }
+
+        GridPane pane = new GridPane();
+        pane.setHgap(20);
+        pane.setVgap(10);
+
+        pane.add(new Label("次序") , 0, 0);
+        pane.add(new Label("姓名"), 1, 0);
+        pane.add(new Label("班级"), 2, 0);
+        pane.add(new Label("学号"), 3, 0);
+        pane.add(new Label("成绩"), 4, 0);
+        pane.add(new Label("缺勤选项"), 5, 0);
+        pane.add(new Label("缺勤次数"), 6, 0);
+        Student[] stu = new Student[i];
+        Text[][] text = new Text[i][5];
+        Button[] bt1= new Button[i];
+        int j;
+        String[] Num=new String[i];//使用数组储存j，防止循环后变量被毁灭
+        try(Scanner Input = new Scanner(fl)){
+=======
         try {//显示所有学生数据
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/DmPage.fxml"));
             Parent conRoot = loader.load();
             Stage conStage = new Stage();
+>>>>>>> 9acffe00a812e1fdcdb2bd83472a728d2243da8f
 
             DmMenu converController = loader.getController();
             converController.init(this, conStage);
@@ -82,6 +125,21 @@ public class MenuController {
         catch(Exception e) {
             e.printStackTrace();
         }
+<<<<<<< HEAD
+        Button bt = new Button("out");
+        pane.add(bt, 2, j + 1);
+
+
+
+        bt.setOnAction(e -> {
+        	BackToMenu();
+        	stage.close();
+        });
+        Scene scene = new Scene(pane);
+        stage.setScene(scene);
+*/
+=======
+>>>>>>> 9acffe00a812e1fdcdb2bd83472a728d2243da8f
     }
 
     @FXML
@@ -103,7 +161,11 @@ public class MenuController {
         }
     }
 
+<<<<<<< HEAD
+    public static void onAbsent(String Number) throws FileNotFoundException, Exception {//锟睫革拷学锟斤拷4
+=======
     public static void onAbsent(String Number) throws FileNotFoundException, Exception {//修改学生4
+>>>>>>> 9acffe00a812e1fdcdb2bd83472a728d2243da8f
         int i =0;
     	File Fl = new File("Number.txt");
         File fl = new File("Students.txt");
