@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.AddController">
+   <children>
+      <Label layoutX="163.0" layoutY="96.0" text="输入要操作的学生学号" />
+      <TextField fx:id="setNumber" layoutX="154.0" layoutY="159.0" />
+      <Button layoutX="196.0" layoutY="257.0" mnemonicParsing="false" onAction="#onCheck" text="ok" />
+   </children>
+</AnchorPane>

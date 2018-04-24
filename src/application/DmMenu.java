@@ -195,7 +195,7 @@ public class DmMenu {
                 text[j][2] = new Text(stu[j].GetNumber());
                 text[j][3] = new Text("" + stu[j].GetScore());
                 text[j][4] = new Text("" + stu[j].GetAbsent());
-                bt1[j]=new Button("out");
+                bt1[j]=new Button("ȱϯ");
                 bt2[j]=new Button("+1");
                 bt3[j]=new Button("-1");
                 pane.add(new Label("" + j + 1), 0, j + 1);
