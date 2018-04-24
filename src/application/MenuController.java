@@ -69,7 +69,6 @@ public class MenuController {
     @FXML
 
 	public void dmBtn() throws FileNotFoundException {
-<<<<<<< HEAD
         try {//进入点名面板
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/DmPage.fxml"));
             Parent conRoot = loader.load();
@@ -109,23 +108,39 @@ public class MenuController {
         int j;
         String[] Num=new String[i];//使用数组储存j，防止循环后变量被毁灭
         try(Scanner Input = new Scanner(fl)){
-=======
-        try {//显示所有学生数据
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/DmPage.fxml"));
-            Parent conRoot = loader.load();
-            Stage conStage = new Stage();
->>>>>>> 9acffe00a812e1fdcdb2bd83472a728d2243da8f
 
-            DmMenu converController = loader.getController();
-            converController.init(this, conStage);
-            conStage.setTitle("点名！");
-            conStage.setScene(new Scene(conRoot));
-            conStage.show();
+            for(j =0; j <i;j++){
+                stu[j] = new Student(Input.next(), Input.next(),
+                        Input.next(), Input.nextInt(),Input.nextInt());
+                text[j][0] = new Text(stu[j].GetName());
+                text[j][1] = new Text(stu[j].GetClass());
+                text[j][2] = new Text(stu[j].GetNumber());
+                text[j][3] = new Text("" + stu[j].GetScore());
+                text[j][4] = new Text("" + stu[j].GetAbsent());
+                bt1[j]=new Button("缺勤");
+                pane.add(new Label("" + j + 1), 0, j + 1);
+                pane.add(text[j][0], 1, j + 1);
+                pane.add(text[j][1], 2, j + 1);
+                pane.add(text[j][2], 3, j + 1);
+                pane.add(text[j][3], 4, j + 1);
+                pane.add(bt1[j],5,j + 1);
+                pane.add(text[j][4], 6, j + 1);
+                int k = j;
+                Num[k] = stu[j].GetNumber();
+                bt1[j].setOnAction(e -> {
+                	try {
+                		onAbsent(Num[k]);
+        				dmBtn();
+        			} catch (FileNotFoundException e1) {
+        				// TODO Auto-generated catch block
+        				e1.printStackTrace();
+        			} catch (Exception e1) {
+        				// TODO Auto-generated catch block
+        				e1.printStackTrace();
+        			}
+                });
+            }
         }
-        catch(Exception e) {
-            e.printStackTrace();
-        }
-<<<<<<< HEAD
         Button bt = new Button("out");
         pane.add(bt, 2, j + 1);
 
@@ -138,8 +153,6 @@ public class MenuController {
         Scene scene = new Scene(pane);
         stage.setScene(scene);
 */
-=======
->>>>>>> 9acffe00a812e1fdcdb2bd83472a728d2243da8f
     }
 
     @FXML
@@ -152,6 +165,8 @@ public class MenuController {
             PaneController converController =  loader.getController();
             converController.init(this, conStage);
 
+
+
             conStage.setTitle("yes");
             conStage.setScene(new Scene(conRoot));
             conStage.show();
@@ -161,11 +176,7 @@ public class MenuController {
         }
     }
 
-<<<<<<< HEAD
     public static void onAbsent(String Number) throws FileNotFoundException, Exception {//锟睫革拷学锟斤拷4
-=======
-    public static void onAbsent(String Number) throws FileNotFoundException, Exception {//修改学生4
->>>>>>> 9acffe00a812e1fdcdb2bd83472a728d2243da8f
         int i =0;
     	File Fl = new File("Number.txt");
         File fl = new File("Students.txt");
