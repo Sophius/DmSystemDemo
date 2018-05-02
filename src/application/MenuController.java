@@ -7,25 +7,35 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 public class MenuController {
 
+
+	private boolean clockState = true;
     private Stage stage;
     private DsController controller;
     public void init(DsController controller, Stage stage){
@@ -42,6 +52,9 @@ public class MenuController {
 
     @FXML
     private Button moreManage;
+
+    @FXML
+    private Label timeLbl;
 
     @FXML
     private Button dm;
@@ -239,5 +252,35 @@ public class MenuController {
         	ex.printStackTrace();
         }
 	}
+
+
+    @FXML
+    private void onClock(){
+
+    	ClockPane clock = new ClockPane();
+
+        //将clock放在pane里
+        BorderPane pane = new BorderPane();
+        pane.setCenter(clock);
+
+        //创建一个handler
+        EventHandler<ActionEvent> eventHandler = e -> {
+            clock.setCurrentTime();
+        };
+
+        Timeline animation = new Timeline(
+                new KeyFrame(Duration.millis(1000), eventHandler));
+        animation.setCycleCount(Timeline.INDEFINITE);
+        animation.play();
+
+        Scene scene= new Scene(pane, 250, 250);
+        stage.setTitle("时钟");
+        stage.setScene(scene);
+        stage.show();
+
+        //让clock跟随窗口的变化而变化
+        pane.widthProperty().addListener(ov -> clock.setW(pane.getWidth()));
+        pane.heightProperty().addListener(ov -> clock.setH(pane.getHeight()));
+    }
 
 }

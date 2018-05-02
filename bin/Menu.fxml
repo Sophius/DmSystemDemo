@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.MenuController">
+  <children>
+    <Button fx:id="moreManage" layoutX="343.0" layoutY="84.0" mnemonicParsing="false" onAction="#manageBtn" prefHeight="78.0" prefWidth="177.0" text="更多管理选项" />
+    <Button fx:id="dm" layoutX="81.0" layoutY="200.0" mnemonicParsing="false" onAction="#dmBtn" prefHeight="150.0" prefWidth="439.0" text="点   名" textAlignment="JUSTIFY" textFill="#125fbc">
+      <font>
+        <Font size="53.0" />
+      </font>
+    </Button>
+    <Button fx:id="checkInfo" layoutX="81.0" layoutY="84.0" mnemonicParsing="false" onAction="#checkBtn" prefHeight="78.0" prefWidth="177.0" text="查询学生信息" />
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MenuController">
-   <children>
-      <Button fx:id="moreManage" layoutX="343.0" layoutY="84.0" mnemonicParsing="false" onAction="#manageBtn" prefHeight="78.0" prefWidth="177.0" text="更多管理选项" />
-      <Button fx:id="dm" layoutX="81.0" layoutY="200.0" mnemonicParsing="false" onAction="#dmBtn" prefHeight="150.0" prefWidth="439.0" text="点   名" textAlignment="JUSTIFY" textFill="#125fbc">
-         <font>
-            <Font size="53.0" />
-         </font>
-      </Button>
-      <Button fx:id="checkInfo" layoutX="81.0" layoutY="84.0" mnemonicParsing="false" onAction="#checkBtn" prefHeight="78.0" prefWidth="177.0" text="查询学生信息" />
-   </children>
+    <Button layoutX="22.0" layoutY="14.0" mnemonicParsing="false" onAction="#onClock" text="显示时间" />
+  </children>
 </AnchorPane>
