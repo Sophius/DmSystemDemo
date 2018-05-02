@@ -234,6 +234,7 @@ public class PaneController {//管理系统面板
 
     			conStage.setTitle("Con");
     			conStage.setScene(new Scene(conRoot));
+    			conRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
     			conStage.show();
             }
             catch (Exception ex) {
@@ -478,6 +479,7 @@ public class PaneController {//管理系统面板
 
 			conStage.setTitle("Con");
 			conStage.setScene(new Scene(conRoot));
+			conRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			conStage.show();
         }
         catch (Exception ex) {

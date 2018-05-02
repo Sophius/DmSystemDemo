@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 //开发与更新记录
+//0502 css文件美化了界面 -许嘉熙
 //0502 增加了时钟功能 -许嘉熙
 //0424 修复了上传Github时发生的未知Bug -许嘉熙
 //0424 增加了加减分功能按钮 - 许嘉熙

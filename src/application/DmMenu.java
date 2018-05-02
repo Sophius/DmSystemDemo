@@ -259,6 +259,7 @@ public class DmMenu {
             stage.close();
         });
         Scene scene = new Scene(pane);
+        pane.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         stage.setScene(scene);
     }
     public void BackToMenu(){//回到主菜单
@@ -274,6 +275,7 @@ public class DmMenu {
 
             conStage.setTitle("Con");
             conStage.setScene(new Scene(conRoot));
+            conRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             conStage.show();
         }
         catch (Exception ex) {

@@ -73,6 +73,7 @@ public class MenuController {
 
             conStage.setTitle("查询");
             conStage.setScene(new Scene(conRoot));
+            conRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             conStage.show();
 
         } catch(Exception e) {
@@ -91,6 +92,7 @@ public class MenuController {
             converController.init(this, conStage);
             conStage.setTitle("点名方式");
             conStage.setScene(new Scene(conRoot));
+            conRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             conStage.show();
         }
         catch(Exception e) {
@@ -182,6 +184,7 @@ public class MenuController {
 
             conStage.setTitle("yes");
             conStage.setScene(new Scene(conRoot));
+            conRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             conStage.show();
 
         } catch(Exception e) {
@@ -246,6 +249,7 @@ public class MenuController {
 
 			conStage.setTitle("Con");
 			conStage.setScene(new Scene(conRoot));
+			conRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			conStage.show();
         }
         catch (Exception ex) {
