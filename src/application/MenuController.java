@@ -35,8 +35,9 @@ import javafx.event.EventHandler;
 public class MenuController {
 
 
-	private boolean clockState = true;
+
     private Stage stage;
+
     private DsController controller;
     public void init(DsController controller, Stage stage){
         this.stage = stage;
@@ -261,6 +262,7 @@ public class MenuController {
     @FXML
     private void onClock(){
 
+
     	ClockPane clock = new ClockPane();
 
         //将clock放在pane里
@@ -278,9 +280,10 @@ public class MenuController {
         animation.play();
 
         Scene scene= new Scene(pane, 250, 250);
-        stage.setTitle("时钟");
-        stage.setScene(scene);
-        stage.show();
+        Stage Stage3 = new Stage();
+        Stage3.setTitle("时钟");
+        Stage3.setScene(scene);
+        Stage3.show();
 
         //让clock跟随窗口的变化而变化
         pane.widthProperty().addListener(ov -> clock.setW(pane.getWidth()));
