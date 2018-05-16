@@ -306,11 +306,7 @@ public class PaneController {//管理系统面板
         else{
             try (PrintWriter output = new PrintWriter(fl)) {
                 for(int j = 0;j < i;j ++){
-                    output.print(stu[j].GetName() + "\t");
-                    output.print(stu[j].GetClass() + "\t");
-                    output.print(stu[j].GetNumber() + "\t");
-                    output.print(stu[j].GetScore() + "\t");
-                    output.println(stu[j].GetAbsent());
+                	Output.output(stu[j].GetName(), stu[j].GetClass(), stu[j].GetNumber(), stu[j].GetScore(), stu[j].GetAbsent(), output);
                 }
             }
         }
@@ -349,11 +345,7 @@ public class PaneController {//管理系统面板
         else{
             try (PrintWriter output = new PrintWriter(fl)) {
                 for(int j = 0;j < i;j ++){
-                    output.print(stu[j].GetName() + "\t");
-                    output.print(stu[j].GetClass() + "\t");
-                    output.print(stu[j].GetNumber() + "\t");
-                    output.print(stu[j].GetScore() + "\t");
-                    output.println(stu[j].GetAbsent());
+                	Output.output(stu[j].GetName(), stu[j].GetClass(), stu[j].GetNumber(), stu[j].GetScore(), stu[j].GetAbsent(), output);
                 }
             }
         }
@@ -392,11 +384,7 @@ public class PaneController {//管理系统面板
         else{
             try (PrintWriter output = new PrintWriter(fl)) {
                 for(int j = 0;j < i;j ++){
-                    output.print(stu[j].GetName() + "\t");
-                    output.print(stu[j].GetClass() + "\t");
-                    output.print(stu[j].GetNumber() + "\t");
-                    output.print(stu[j].GetScore() + "\t");
-                    output.println(stu[j].GetAbsent());
+                	Output.output(stu[j].GetName(), stu[j].GetClass(), stu[j].GetNumber(), stu[j].GetScore(), stu[j].GetAbsent(), output);
                 }
             }
         }

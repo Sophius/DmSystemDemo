@@ -141,7 +141,7 @@ public class AddController {
 	}
 
 	@FXML
-	private void detele() throws FileNotFoundException, Exception {//É¾³ýÑ§Éú3
+	private void detele() throws FileNotFoundException, Exception {
         File Fl = new File("Number.txt");
         File fl = new File("Students.txt");
         try (Scanner input = new Scanner(Fl)) {
@@ -173,11 +173,7 @@ public class AddController {
         else{
             try (PrintWriter output = new PrintWriter(fl)) {
                 for(int j = 0;j < i;j ++){
-                    output.print(stu[j].GetName() + "\t");
-                    output.print(stu[j].GetNumber() + "\t");
-                    output.print(stu[j].GetClass() + "\t");
-                    output.print(stu[j].GetScore()+ "\t");
-                    output.println(stu[j].GetAbsent());
+                	Output.output(stu[j].GetName(), stu[j].GetClass(), stu[j].GetNumber(), stu[j].GetScore(), stu[j].GetAbsent(), output);
                 }
             }
         }
@@ -367,11 +363,7 @@ public class AddController {
         else{
             try (PrintWriter output = new PrintWriter(fl)) {
                 for(int j = 0;j < i;j ++){
-                    output.print(stu[j].GetName() + "\t");
-                    output.print(stu[j].GetClass() + "\t");
-                    output.print(stu[j].GetNumber() + "\t");
-                    output.print(stu[j].GetScore() + "\t");
-                    output.println(stu[j].GetAbsent());
+                	Output.output(stu[j].GetName(), stu[j].GetClass(), stu[j].GetNumber(), stu[j].GetScore(), stu[j].GetAbsent(), output);
                 }
             }
         }
