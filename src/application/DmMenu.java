@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DmMenu {
@@ -28,25 +29,21 @@ public class DmMenu {
     @FXML
     private void randomDm() throws FileNotFoundException{//随机点名1 产生i以内随机数
     	int i = 0;
-    	File Fl = new File("Number.txt");
-        File fl = new File("Students.txt");
-        try (Scanner input = new Scanner(Fl)) {
-            i = input.nextInt();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+    	File csv = new File("Students.csv");
+        ArrayList<Student> list = new ArrayList();
+        Output.readCSV("Students.csv", list);
+    	i=list.size();
     	int num=(int)(Math.random()*i);//产生随机数
     	randomDm2(num);
     }
     private void randomDm2(int num) throws FileNotFoundException{//随机点名2
-    	int i = 0;
-        File Fl = new File("Number.txt");
-        File fl = new File("Students.txt");
-        try (Scanner input = new Scanner(Fl)) {
-            i = input.nextInt();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+    	
+    	
+        
+        File csv = new File("Students.csv");
+        ArrayList<Student> list = new ArrayList();
+        Output.readCSV("Students.csv", list);
+        int i=list.size();
 
 
         GridPane pane = new GridPane();
@@ -70,11 +67,10 @@ public class DmMenu {
         int j = 0;
         String[] Num=new String[i];//数组储存学号
         String[] Name=new String[i];//数组储存姓名
-        try(Scanner Input = new Scanner(fl)){
+        
 
             for(j =0; j <i;j++){
-                stu[j] = new Student(Input.next(), Input.next(),
-                        Input.next(), Input.nextInt(),Input.nextInt());
+                stu[j] = list.get(j);
 
 
                 int k = j;
@@ -151,19 +147,18 @@ public class DmMenu {
                 Scene scene = new Scene(pane);
                 stage.setScene(scene);
             }
-        }
+        
 
 
     @FXML
     private void listDm(){//顺序点名
         int i = 0;
-        File Fl = new File("Number.txt");
-        File fl = new File("Students.txt");
-        try (Scanner input = new Scanner(Fl)) {
-            i = input.nextInt();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        
+        
+        File csv = new File("Students.csv");
+        ArrayList<Student> list = new ArrayList<Student>();
+        Output.readCSV("Students.csv", list);
+        i=list.size();
 
         GridPane pane = new GridPane();
         pane.setHgap(20);
@@ -184,12 +179,12 @@ public class DmMenu {
         Button[] bt2= new Button[i];
         Button[] bt3= new Button[i];
         int j = 0;
-        String[] Num=new String[i];//鏂板缓鏁扮粍鍌ㄥ瓨瀛﹀彿锛坖浼氶攢姣佷笉鑳藉湪onAbsent锛堬級鐩存帴鐢級
-        try(Scanner Input = new Scanner(fl)){
+        String[] Num=new String[i];
+        
+        
 
             for(j =0; j <i;j++){
-                stu[j] = new Student(Input.next(), Input.next(),
-                        Input.next(), Input.nextInt(),Input.nextInt());
+                stu[j] = list.get(j);
                 text[j][0] = new Text(stu[j].GetName());
                 text[j][1] = new Text(stu[j].GetClass());
                 text[j][2] = new Text(stu[j].GetNumber());
@@ -246,9 +241,7 @@ public class DmMenu {
                     }
                 });
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        
         Button bt = new Button("out");
         pane.add(bt, 2, j + 1);
 

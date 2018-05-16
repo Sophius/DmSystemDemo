@@ -21,6 +21,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -195,38 +196,35 @@ public class MenuController {
 
     public static void onAbsent(String Number) throws FileNotFoundException, Exception {//�޸�ѧ��4
         int i =0;
-    	File Fl = new File("Number.txt");
-        File fl = new File("Students.txt");
-        try (Scanner input = new Scanner(Fl)) {
-            i = input.nextInt();
-        }
+    	
+    	File csv = new File("Students.csv");
+        ArrayList<Student> list = new ArrayList();
+        Output.readCSV("Students.csv", list);
+        i=list.size();
 
 
 
         Student[] stu = new Student[i];
-        try(Scanner Input = new Scanner(fl)){
+        
             for(int j =0; j < i;j++){
-                stu[j] = new Student(Input.next(), Input.next(),
-                        Input.next(), Input.nextInt(),Input.nextInt());
+                stu[j] = list.get(j);
                 if(Number.compareTo(stu[j].GetNumber()) == 0){
                     stu[j] = new Student(stu[j].GetName(), stu[j].GetClass(),
                     		stu[j].GetNumber(), stu[j].GetScore(),(stu[j].GetAbsent()+1));
                 }
             }
-        }
+        
 
-        try(PrintWriter output = new PrintWriter(Fl)){
-            output.print(i);
-        }
+        
 
         if(i == 0){
-            try (PrintWriter output = new PrintWriter(fl)) {
+            try (PrintWriter output = new PrintWriter(csv)) {
             }
         }
         else{
-            try (PrintWriter output = new PrintWriter(fl)) {
+            try (PrintWriter output = new PrintWriter(csv)) {
                 for(int j = 0;j < i;j ++){
-                	Output.output(stu[j].GetName(), stu[j].GetClass(), stu[j].GetNumber(), stu[j].GetScore(), stu[j].GetAbsent(), output);
+                	Output.outputCsv(stu[j].GetName(), stu[j].GetClass(), stu[j].GetNumber(), stu[j].GetScore(), stu[j].GetAbsent(), output);
                 }
             }
         }

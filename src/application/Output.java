@@ -1,8 +1,14 @@
 package application;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 import com.csvreader.CsvWriter;
 
@@ -17,9 +23,59 @@ public class Output {
         output.println(Absent);
 
 	}
+	public static void outputCsv(String Name,String Class,String Number,int Score, int Absent, PrintWriter output){
 
-	public static void nstage(String fxml){
+		output.print(Name + ",");
+        output.print(Class + ",");
+        output.print(Number + ",");
+        output.print(Score+ ",");
+        output.print(Absent+ "\r\n");
 
+	}
+
+	public static void readCSV(String readpath, ArrayList list)	{
+	    File inFile = new File(readpath);
+	    try
+	    {
+	        BufferedReader reader = new BufferedReader(new FileReader(inFile));
+	        
+	        while(reader.ready())
+	        {
+	            String line = reader.readLine();
+	            StringTokenizer st = new StringTokenizer(line, ",");
+	            String Name;
+	            String Number;
+	            String Class;
+	            int Score;
+	            int Absent;
+	            
+
+	            if (st.hasMoreTokens() )
+	            {
+	                Name = st.nextToken().trim();
+	                Class = st.nextToken().trim();
+	                Number = st.nextToken().trim();
+	                Score =Integer.valueOf(st.nextToken().trim());
+	                Absent = Integer.valueOf(st.nextToken().trim());
+
+	                Student sample = new Student(Name, Class, Number, Score, Absent);
+	                list.add(sample);
+	            }
+	            
+	        }
+	        reader.close();
+
+	    }
+	    catch (FileNotFoundException e)
+	    {
+
+	        e.printStackTrace();
+	    }
+	    catch (IOException e)
+	    {
+
+	        e.printStackTrace();
+	    }
 	}
 	
 	public static void writeCSV() {  

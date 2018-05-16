@@ -7,6 +7,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.channels.FileChannel;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -128,11 +129,11 @@ public class PaneController {//管理系统面板
 	@FXML
 	private void checkallStudents() throws FileNotFoundException {//显示所有学生数据
         int i = 0;
-		File Fl = new File("Number.txt");
-        File fl = new File("Students.txt");
-        try (Scanner input = new Scanner(Fl)) {
-            i = input.nextInt();
-        }
+		
+		File csv = new File("Students.csv");
+        ArrayList<Student> list = new ArrayList();
+        Output.readCSV("Students.csv", list);
+        i=list.size();
 
         GridPane pane = new GridPane();
         pane.setHgap(20);
@@ -154,11 +155,10 @@ public class PaneController {//管理系统面板
         Button[] bt3= new Button[i];
         int j;
         String[] Num=new String[i];//新建数组储存学号（j会销毁不能在onAbsent（）直接用）
-        try(Scanner Input = new Scanner(fl)){
+        
 
             for(j =0; j <i;j++){
-                stu[j] = new Student(Input.next(), Input.next(),
-                        Input.next(), Input.nextInt(),Input.nextInt());
+                stu[j] =list.get(j);
                 text[j][0] = new Text(stu[j].GetName());
                 text[j][1] = new Text(stu[j].GetClass());
                 text[j][2] = new Text(stu[j].GetNumber());
@@ -215,7 +215,7 @@ public class PaneController {//管理系统面板
         			}
                 });
             }
-        }
+        
         Button bt = new Button("out");
         pane.add(bt, 2, j + 1);
 
@@ -247,12 +247,11 @@ public class PaneController {//管理系统面板
     }
 	@FXML
 	private void onBackup()throws IOException{//备份数据库
-		File oldf=new File("Students.txt");
-		File newf=new File("F:\\StudentsBackup.txt");//新文件路径（注意要用 \\来代替\，转义字符）
-		File oldf2=new File("Number.txt");
-		File newf2=new File("F:\\NumberBackup.txt");//新文件路径（注意要用 \\来代替\，转义字符）
+		File oldf=new File("Students.csv");
+		File newf=new File("C:\\StudentsBackup.csv");//新文件路径（注意要用 \\来代替\，转义字符）
+		
 		copyfile(oldf,newf);;
-		copyfile(oldf2,newf2);;
+		
 
 
 	}
@@ -275,38 +274,35 @@ public class PaneController {//管理系统面板
 
 		}
 	private void onAbsent(String Number) throws FileNotFoundException, Exception {//缺勤次数+1
-        File Fl = new File("Number.txt");
-        File fl = new File("Students.txt");
-        try (Scanner input = new Scanner(Fl)) {
-            i = input.nextInt();
-        }
+        
+		File csv = new File("Students.csv");
+        ArrayList<Student> list = new ArrayList();
+        Output.readCSV("Students.csv", list);
+        i=list.size();
 
 
 
         Student[] stu = new Student[i];
-        try(Scanner Input = new Scanner(fl)){
+        
             for(int j =0; j < i;j++){
-                stu[j] = new Student(Input.next(), Input.next(),
-                        Input.next(), Input.nextInt(),Input.nextInt());
+                stu[j] = list.get(j);
                 if(Number.compareTo(stu[j].GetNumber()) == 0){
                     stu[j] = new Student(stu[j].GetName(), stu[j].GetClass(),
                     		stu[j].GetNumber(), stu[j].GetScore(),(stu[j].GetAbsent()+1));
                 }
             }
-        }
+        
 
-        try(PrintWriter output = new PrintWriter(Fl)){
-            output.print(i);
-        }
+        
 
         if(i == 0){
-            try (PrintWriter output = new PrintWriter(fl)) {
+            try (PrintWriter output = new PrintWriter(csv)) {
             }
         }
         else{
-            try (PrintWriter output = new PrintWriter(fl)) {
+            try (PrintWriter output = new PrintWriter(csv)) {
                 for(int j = 0;j < i;j ++){
-                	Output.output(stu[j].GetName(), stu[j].GetClass(), stu[j].GetNumber(), stu[j].GetScore(), stu[j].GetAbsent(), output);
+                	Output.outputCsv(stu[j].GetName(), stu[j].GetClass(), stu[j].GetNumber(), stu[j].GetScore(), stu[j].GetAbsent(), output);
                 }
             }
         }
@@ -314,38 +310,35 @@ public class PaneController {//管理系统面板
     }
 
 	void onPlus(String Number) throws FileNotFoundException, Exception {//加一分
-        File Fl = new File("Number.txt");
-        File fl = new File("Students.txt");
-        try (Scanner input = new Scanner(Fl)) {
-            i = input.nextInt();
-        }
+        
+        File csv = new File("Students.csv");
+        ArrayList<Student> list = new ArrayList();
+        Output.readCSV("Students.csv", list);
+        i=list.size();
 
 
 
         Student[] stu = new Student[i];
-        try(Scanner Input = new Scanner(fl)){
+        
             for(int j =0; j < i;j++){
-                stu[j] = new Student(Input.next(), Input.next(),
-                        Input.next(), Input.nextInt(),Input.nextInt());
+                stu[j] =list.get(j);
                 if(Number.compareTo(stu[j].GetNumber()) == 0){
                     stu[j] = new Student(stu[j].GetName(), stu[j].GetClass(),
                     		stu[j].GetNumber(), (stu[j].GetScore()+1),(stu[j].GetAbsent()));
                 }
             }
-        }
+        
 
-        try(PrintWriter output = new PrintWriter(Fl)){
-            output.print(i);
-        }
+        
 
         if(i == 0){
-            try (PrintWriter output = new PrintWriter(fl)) {
+            try (PrintWriter output = new PrintWriter(csv)) {
             }
         }
         else{
-            try (PrintWriter output = new PrintWriter(fl)) {
+            try (PrintWriter output = new PrintWriter(csv)) {
                 for(int j = 0;j < i;j ++){
-                	Output.output(stu[j].GetName(), stu[j].GetClass(), stu[j].GetNumber(), stu[j].GetScore(), stu[j].GetAbsent(), output);
+                	Output.outputCsv(stu[j].GetName(), stu[j].GetClass(), stu[j].GetNumber(), stu[j].GetScore(), stu[j].GetAbsent(), output);
                 }
             }
         }
@@ -353,38 +346,35 @@ public class PaneController {//管理系统面板
     }
 
 	void onSubtract(String Number) throws FileNotFoundException, Exception {//扣一分
-        File Fl = new File("Number.txt");
-        File fl = new File("Students.txt");
-        try (Scanner input = new Scanner(Fl)) {
-            i = input.nextInt();
-        }
+        
+        File csv = new File("Students.csv");
+        ArrayList<Student> list = new ArrayList();
+        Output.readCSV("Students.csv", list);
+        i=list.size();
 
 
 
         Student[] stu = new Student[i];
-        try(Scanner Input = new Scanner(fl)){
+        
             for(int j =0; j < i;j++){
-                stu[j] = new Student(Input.next(), Input.next(),
-                        Input.next(), Input.nextInt(),Input.nextInt());
+                stu[j] = list.get(j);
                 if(Number.compareTo(stu[j].GetNumber()) == 0){
                     stu[j] = new Student(stu[j].GetName(), stu[j].GetClass(),
                     		stu[j].GetNumber(), (stu[j].GetScore()-1),(stu[j].GetAbsent()));
                 }
             }
-        }
+        
 
-        try(PrintWriter output = new PrintWriter(Fl)){
-            output.print(i);
-        }
+        
 
         if(i == 0){
-            try (PrintWriter output = new PrintWriter(fl)) {
+            try (PrintWriter output = new PrintWriter(csv)) {
             }
         }
         else{
-            try (PrintWriter output = new PrintWriter(fl)) {
+            try (PrintWriter output = new PrintWriter(csv)) {
                 for(int j = 0;j < i;j ++){
-                	Output.output(stu[j].GetName(), stu[j].GetClass(), stu[j].GetNumber(), stu[j].GetScore(), stu[j].GetAbsent(), output);
+                	Output.outputCsv(stu[j].GetName(), stu[j].GetClass(), stu[j].GetNumber(), stu[j].GetScore(), stu[j].GetAbsent(), output);
                 }
             }
         }
@@ -413,12 +403,11 @@ public class PaneController {//管理系统面板
 
         bt1.setOnAction(e -> {
             try {
-            	File oldf=new File("F:\\StudentsBackup.txt");
-        		File newf=new File("Students.txt");//新文件路径（注意要用 \\来代替\，转义字符）
-        		File oldf2=new File("F:\\NumberBackup.txt");
-        		File newf2=new File("Number.txt");//新文件路径（注意要用 \\来代替\，转义字符）
+            	File oldf=new File("C:\\StudentsBackup.csv");
+        		File newf=new File("Students.csv");//新文件路径（注意要用 \\来代替\，转义字符）
+        		
         		copyfile(oldf,newf);;
-        		copyfile(oldf2,newf2);;
+        		
 
 
         		Text text2 = new Text(100, 100, "程序已将数据还原！");
@@ -474,5 +463,7 @@ public class PaneController {//管理系统面板
         	ex.printStackTrace();
         }
 	}
+	
+	
 
 }

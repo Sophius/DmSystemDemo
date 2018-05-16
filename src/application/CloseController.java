@@ -19,14 +19,11 @@ public class CloseController {
 
 	@FXML
 	 private void onYes() throws FileNotFoundException{
-		File fl = new File("Students.txt");
+		File fl = new File("Students.csv");
         try (PrintWriter output = new PrintWriter(fl)) {
         }//向文件中写入新的学生信息
 
-        File Fl = new File("Number.txt");
-        try(PrintWriter output = new PrintWriter(Fl)){
-            output.print(0);//定义学生数量为0
-        }
+        
 
         Text text = new Text(100, 100, "程序已将所有数据删除！");
         Button bt1 = new Button("确定");
