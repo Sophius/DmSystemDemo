@@ -293,7 +293,7 @@ public class AddController {
         GridPane pane = new GridPane();
         ScrollPane sp = new ScrollPane();
         sp.setMaxHeight(500);
-        sp.setMinWidth(650);
+        
         sp.setContent(pane);
         pane.setHgap(20);
         pane.setVgap(10);
@@ -320,8 +320,12 @@ public class AddController {
             }
             catch (FileNotFoundException ex) {
             	 Logger.getLogger(AddController.class.getName()).log(Level.SEVERE, null, ex);
+            	 System.out.println("Error1");
             } catch (Exception ex) {
             	 Logger.getLogger(AddController.class.getName()).log(Level.SEVERE, null, ex);
+            	 System.out.println("Error2");
+            	 pane.add(new Label("内容不能为空"), 0, 6);
+                 
             }
         });
     }
@@ -329,7 +333,10 @@ public class AddController {
 
 	private void Amend(TextField newName, TextField newClass, TextField newNumber,
             TextField newGrade,TextField newAbsent, String Number) throws FileNotFoundException, Exception {//修改学生4
-        
+        if(newNumber == null) {
+        	System.out.println("Error");
+        	return;
+        }
         File csv = new File("Students.csv");
         ArrayList<Student> list = new ArrayList();
         Output.readCSV("Students.csv", list);
