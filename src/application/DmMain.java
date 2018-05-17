@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 //开发与更新记录
+//0517 增加修改时错误提示
 //0517 增加了滚动条-许嘉熙
 //0517 将txt储存改为csv储存，读取修改更方便 -许嘉熙
 //0516 集成了output功能 -许嘉熙
