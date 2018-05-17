@@ -100,6 +100,7 @@ public class MenuController {
         catch(Exception e) {
             e.printStackTrace();
         }
+    }
 /**   //此处是原本没做随机点名时的顺序点名代码
         int i = 0;
 		File Fl = new File("Number.txt");
@@ -169,9 +170,9 @@ public class MenuController {
         });
         Scene scene = new Scene(pane);
         stage.setScene(scene);
-*/
-    }
 
+    }
+*/
     @FXML
     private void manageBtn(){
         try {
@@ -184,7 +185,7 @@ public class MenuController {
 
 
 
-            conStage.setTitle("yes");
+            conStage.setTitle("管理菜单");
             conStage.setScene(new Scene(conRoot));
             conRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             conStage.show();
@@ -242,7 +243,7 @@ public class MenuController {
 
 
 
-			conStage.setTitle("Con");
+			conStage.setTitle("主菜单");
 			conStage.setScene(new Scene(conRoot));
 			conRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			conStage.show();

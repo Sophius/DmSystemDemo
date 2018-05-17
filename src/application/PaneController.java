@@ -57,7 +57,7 @@ public class PaneController {//管理系统面板
 
 
 
-			closeStage.setTitle("Close");
+			closeStage.setTitle("清楚数据库");
 			closeStage.setScene(new Scene(closeRoot));
 			closeStage.show();
 
@@ -97,7 +97,7 @@ public class PaneController {//管理系统面板
 
 
 
-			addStage.setTitle("Add");
+			addStage.setTitle("删除学生");
 			addStage.setScene(new Scene(addRoot));
 			addStage.show();
 
@@ -117,7 +117,7 @@ public class PaneController {//管理系统面板
 
 
 
-			amdStage.setTitle("Amd");
+			amdStage.setTitle("查看与修改");
 			amdStage.setScene(new Scene(amdRoot));
 			amdStage.show();
 
@@ -232,7 +232,7 @@ public class PaneController {//管理系统面板
 
 
 
-    			conStage.setTitle("Con");
+    			conStage.setTitle("管理菜单");
     			conStage.setScene(new Scene(conRoot));
     			conRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
     			conStage.show();
@@ -408,6 +408,7 @@ public class PaneController {//管理系统面板
         		
         		copyfile(oldf,newf);;
         		
+        		
 
 
         		Text text2 = new Text(100, 100, "程序已将数据还原！");
@@ -454,7 +455,7 @@ public class PaneController {//管理系统面板
 
 
 
-			conStage.setTitle("Con");
+			conStage.setTitle("管理菜单");
 			conStage.setScene(new Scene(conRoot));
 			conRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			conStage.show();

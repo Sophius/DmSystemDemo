@@ -266,7 +266,7 @@ public class DmMenu {
 
 
 
-            conStage.setTitle("Con");
+            conStage.setTitle("Ö÷²Ëµ¥");
             conStage.setScene(new Scene(conRoot));
             conRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             conStage.show();

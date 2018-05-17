@@ -77,6 +77,46 @@ public class Output {
 	        e.printStackTrace();
 	    }
 	}
+	public static void readCSV2(String readpath, ArrayList list)	{
+	    File inFile = new File(readpath);
+	    try
+	    {
+	        BufferedReader reader = new BufferedReader(new FileReader(inFile));
+	        
+	        while(reader.ready())
+	        {
+	            String line = reader.readLine();
+	            StringTokenizer st = new StringTokenizer(line, ",");
+	            String Name;
+	            String Pass;
+	            
+	            
+
+	            if (st.hasMoreTokens() )
+	            {
+	                Name = st.nextToken().trim();
+	                Pass = st.nextToken().trim();
+	                
+
+	                Teacher sample = new Teacher(Name,Pass);
+	                list.add(sample);
+	            }
+	            
+	        }
+	        reader.close();
+
+	    }
+	    catch (FileNotFoundException e)
+	    {
+
+	        e.printStackTrace();
+	    }
+	    catch (IOException e)
+	    {
+
+	        e.printStackTrace();
+	    }
+	}
 	
 	public static void writeCSV() {  
 	    // 定义一个CSV路径  
