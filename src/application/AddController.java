@@ -291,10 +291,7 @@ public class AddController {
 
         Button bt = new Button("OK");
         GridPane pane = new GridPane();
-        ScrollPane sp = new ScrollPane();
-        sp.setMaxHeight(500);
         
-        sp.setContent(pane);
         pane.setHgap(20);
         pane.setVgap(10);
 
@@ -310,7 +307,7 @@ public class AddController {
         pane.add(newAbsent, 1, 5);
         pane.add(bt, 1, 6);
 
-        Scene scene = new Scene(sp);
+        Scene scene = new Scene(pane);
         stage.setScene(scene);
 
         bt.setOnAction(e -> {
