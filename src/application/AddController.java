@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -213,6 +214,10 @@ public class AddController {
         String Number = setNumber.getText();
 
         GridPane pane = new GridPane();
+        ScrollPane sp = new ScrollPane();
+        sp.setMaxHeight(500);
+        sp.setMinWidth(650);
+        sp.setContent(pane);
         pane.setHgap(20);
         pane.setVgap(10);
 
@@ -272,7 +277,7 @@ public class AddController {
 
         	stage.close();
         });
-        Scene scene = new Scene(pane);
+        Scene scene = new Scene(sp);
         stage.setScene(scene);
 	}
 
@@ -286,6 +291,10 @@ public class AddController {
 
         Button bt = new Button("OK");
         GridPane pane = new GridPane();
+        ScrollPane sp = new ScrollPane();
+        sp.setMaxHeight(500);
+        sp.setMinWidth(650);
+        sp.setContent(pane);
         pane.setHgap(20);
         pane.setVgap(10);
 
@@ -301,7 +310,7 @@ public class AddController {
         pane.add(newAbsent, 1, 5);
         pane.add(bt, 1, 6);
 
-        Scene scene = new Scene(pane);
+        Scene scene = new Scene(sp);
         stage.setScene(scene);
 
         bt.setOnAction(e -> {
@@ -443,6 +452,10 @@ public class AddController {
         String Number = setNumber.getText();
 
         GridPane pane = new GridPane();
+        ScrollPane sp = new ScrollPane();
+        sp.setMaxHeight(500);
+        sp.setMinWidth(650);
+        sp.setContent(pane);
         pane.setHgap(20);
         pane.setVgap(10);
 
@@ -502,7 +515,7 @@ public class AddController {
 
         	stage.close();
         });
-        Scene scene = new Scene(pane);
+        Scene scene = new Scene(sp);
         stage.setScene(scene);
     }
 

@@ -6,7 +6,8 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 //开发与更新记录
-//0517 将txt储存改为csv储存，读取修改更方便
+//0517 增加了滚动条-许嘉熙
+//0517 将txt储存改为csv储存，读取修改更方便 -许嘉熙
 //0516 集成了output功能 -许嘉熙
 //0502 css文件美化了界面 -许嘉熙
 //0502 增加了时钟功能 -许嘉熙

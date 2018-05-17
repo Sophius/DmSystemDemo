@@ -10,10 +10,14 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import javafx.scene.control.ScrollPane;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 
 public class DmMenu {
 	PaneController pc = new PaneController();
@@ -47,6 +51,10 @@ public class DmMenu {
 
 
         GridPane pane = new GridPane();
+        ScrollPane sp = new ScrollPane();
+        sp.setMaxHeight(500);
+        sp.setMinWidth(650);
+        sp.setContent(pane);
         pane.setHgap(20);
         pane.setVgap(10);
 
@@ -85,7 +93,7 @@ public class DmMenu {
             bt1=new Button("ȱϯ");
             bt2=new Button("+1");
             bt3=new Button("-1");
-            pane.add(new Label("" +  1), 0,  1);
+            pane.add(new Label("" +  j), 0,  1);
             pane.add(text[0], 1,  1);
             pane.add(text[1], 2,  1);
             pane.add(text[2], 3,  1);
@@ -144,7 +152,8 @@ public class DmMenu {
 					}
 
                 });
-                Scene scene = new Scene(pane);
+                
+                Scene scene = new Scene(sp);
                 stage.setScene(scene);
             }
         
@@ -160,7 +169,13 @@ public class DmMenu {
         Output.readCSV("Students.csv", list);
         i=list.size();
 
+        ScrollPane sp = new ScrollPane();
+        sp.setMaxHeight(500);
+        sp.setMinWidth(650);
+        
+        
         GridPane pane = new GridPane();
+        
         pane.setHgap(20);
         pane.setVgap(10);
 
@@ -193,7 +208,7 @@ public class DmMenu {
                 bt1[j]=new Button("ȱϯ");
                 bt2[j]=new Button("+1");
                 bt3[j]=new Button("-1");
-                pane.add(new Label("" + j + 1), 0, j + 1);
+                pane.add(new Label("" + j), 0, j + 1);
                 pane.add(text[j][0], 1, j + 1);
                 pane.add(text[j][1], 2, j + 1);
                 pane.add(text[j][2], 3, j + 1);
@@ -251,7 +266,8 @@ public class DmMenu {
             BackToMenu();
             stage.close();
         });
-        Scene scene = new Scene(pane);
+        sp.setContent(pane);
+        Scene scene = new Scene(sp);
         pane.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         stage.setScene(scene);
     }

@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -136,6 +137,10 @@ public class PaneController {//管理系统面板
         i=list.size();
 
         GridPane pane = new GridPane();
+        ScrollPane sp = new ScrollPane();
+        sp.setMaxHeight(500);
+        sp.setMinWidth(650);
+        sp.setContent(pane);
         pane.setHgap(20);
         pane.setVgap(10);
 
@@ -167,7 +172,7 @@ public class PaneController {//管理系统面板
                 bt1[j]=new Button("缺勤");
                 bt2[j]=new Button("+1");
                 bt3[j]=new Button("-1");
-                pane.add(new Label("" + j + 1), 0, j + 1);
+                pane.add(new Label("" + j ), 0, j + 1);
                 pane.add(text[j][0], 1, j + 1);
                 pane.add(text[j][1], 2, j + 1);
                 pane.add(text[j][2], 3, j + 1);
@@ -242,7 +247,7 @@ public class PaneController {//管理系统面板
             }
             stage.close();
         });
-        Scene scene = new Scene(pane);
+        Scene scene = new Scene(sp);
         stage.setScene(scene);
     }
 	@FXML
