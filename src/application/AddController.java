@@ -86,7 +86,7 @@ public class AddController {
                     bt2.setLayoutY(180);
                     Pane pane = new Pane();
                     pane.getChildren().addAll(text1, text2, text3, text4,text5, bt1, bt2);
-                    Scene scene = new Scene(pane, 350, 280);
+                    Scene scene = new Scene(pane, 300, 200);
                     stage.setScene(scene);
 
                     bt1.setOnAction(e -> {
@@ -123,7 +123,7 @@ public class AddController {
                 Pane pane = new Pane();
                 pane.getChildren().addAll(text, bt2);
 
-                Scene scene = new Scene(pane, 350, 250);
+                Scene scene = new Scene(pane, 350, 280);
                 stage.setScene(scene);
 
 
@@ -291,24 +291,28 @@ public class AddController {
 
         Button bt = new Button("OK");
         GridPane pane = new GridPane();
-        
+
+        pane.setMinHeight(350);
+        pane.setMinWidth(300);
         pane.setHgap(20);
         pane.setVgap(10);
 
-        pane.add(new Label("new 姓名："), 0, 1);
-        pane.add(newName, 1, 1);
-        pane.add(new Label("new 班级："), 0, 2);
-        pane.add(newClass, 1, 2);
-        pane.add(new Label("new 学号："), 0, 3);
-        pane.add(newNumber, 1, 3);
-        pane.add(new Label("new 成绩："), 0, 4);
-        pane.add(newGrade, 1, 4);
-        pane.add(new Label("new 缺席："), 0, 5);
-        pane.add(newAbsent, 1, 5);
-        pane.add(bt, 1, 6);
+        pane.add(new Label("new 姓名："), 1, 1);
+        pane.add(newName, 2, 1);
+        pane.add(new Label("new 班级："), 1, 2);
+        pane.add(newClass, 2, 2);
+        pane.add(new Label("new 学号："), 1, 3);
+        pane.add(newNumber, 2, 3);
+        pane.add(new Label("new 成绩："), 1, 4);
+        pane.add(newGrade, 2, 4);
+        pane.add(new Label("new 缺席："), 1, 5);
+        pane.add(newAbsent, 2, 5);
+        pane.add(bt, 2, 6);
 
         Scene scene = new Scene(pane);
         stage.setScene(scene);
+        stage.setMinHeight(300);
+        stage.setMinWidth(400);
 
         bt.setOnAction(e -> {
             try {
@@ -321,7 +325,7 @@ public class AddController {
             } catch (Exception ex) {
             	 Logger.getLogger(AddController.class.getName()).log(Level.SEVERE, null, ex);
             	 System.out.println("Error2");
-            	 pane.add(new Label("内容不能为空"), 0, 6);
+            	 pane.add(new Label("内容不能为空"), 0, 6,3,1);
                  
             }
         });

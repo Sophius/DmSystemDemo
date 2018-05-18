@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/Students.txt" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/application/AddController.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/application/CloseController.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/application/DmMain.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/application/DmMenu.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/application/DsController.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/application/MenuController.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/application/Output.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/application/PaneController.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/application/Student.java" charset="GBK" />
   </component>
 </project>

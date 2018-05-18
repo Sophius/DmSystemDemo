@@ -22,6 +22,7 @@ import javafx.scene.Scene;
 //0418 增加了教师登录系统注册和登录功能
 //0418 增加了登录界面 张欣予
 //0417 开发出管理面板初版 -许嘉熙
+//0518 修改部分界面 张欣予
 
 public class DmMain extends Application {
 	public static int i = 0;

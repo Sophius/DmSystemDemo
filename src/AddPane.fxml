@@ -17,7 +17,7 @@
       <TextField fx:id="setClass" layoutX="220.0" layoutY="164.0" />
       <TextField fx:id="setNumber" layoutX="220.0" layoutY="231.0" />
       <TextField fx:id="setGrade" layoutX="220.0" layoutY="301.0" />
-      <Button layoutX="212.0" layoutY="397.0" mnemonicParsing="false" onAction="#addStudents" text="OK" />
+      <Button layoutX="194.0" layoutY="399.0" mnemonicParsing="false" onAction="#addStudents" prefHeight="42.0" prefWidth="113.0" text="OK" />
       <Label fx:id="wr1Lab" layoutX="246.0" layoutY="347.0" textFill="#e10e0e" />
    </children>
 </AnchorPane>
