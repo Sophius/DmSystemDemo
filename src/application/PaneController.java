@@ -106,7 +106,7 @@ public class PaneController {//管理系统面板
 			e.printStackTrace();
 		}
    }
-	@FXML
+	/*@FXML
 	 private void amendStudents() {//查看修改学生，与AddPane共用一个controller
 		try {
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("/AmdPane.fxml"));
@@ -125,7 +125,7 @@ public class PaneController {//管理系统面板
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-   }
+   }*/
 
 	@FXML
 	private void checkallStudents() throws FileNotFoundException {//显示所有学生数据
