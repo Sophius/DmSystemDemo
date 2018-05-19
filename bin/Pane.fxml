@@ -6,21 +6,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PaneController">
+<AnchorPane prefHeight="424.0" prefWidth="340.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PaneController">
   <children>
-    <Button layoutX="90.0" layoutY="198.0" mnemonicParsing="false" onAction="#closeStudents" text="清空学生数据库" />
-    <Button layoutX="90.0" layoutY="133.0" mnemonicParsing="false" onAction="#addStudents" text="增添学生信息" />
-    <Button layoutX="211.0" layoutY="133.0" mnemonicParsing="false" onAction="#deleteStudents" text="删除学生信息" />
-    <Button layoutX="323.0" layoutY="133.0" mnemonicParsing="false" onAction="#amendStudents" text="修改学生信息" />
-    <Button layoutX="90.0" layoutY="253.0" mnemonicParsing="false" onAction="#onBackup" text="备份数据库到C盘根目录" />
-    <Button layoutX="299.0" layoutY="198.0" mnemonicParsing="false" onAction="#checkallStudents" text="显示所有学生信息" />
-    <Button layoutX="206.0" layoutY="312.0" mnemonicParsing="false" onAction="#EXIT" text="退出管理页面" />
-    <Label layoutX="324.0" layoutY="407.0" prefHeight="13.0" prefWidth="117.0" text="Designed by 南方四人组" textFill="#000000af">
+    <Button layoutX="83.0" layoutY="268.0" mnemonicParsing="false" onAction="#closeStudents" prefHeight="30.0" prefWidth="181.0" text="清空学生数据库" />
+    <Button layoutX="83.0" layoutY="60.0" mnemonicParsing="false" onAction="#addStudents" text="增添学生" />
+    <Button layoutX="185.0" layoutY="60.0" mnemonicParsing="false" onAction="#deleteStudents" text="删除学生" />
+    <Button layoutX="83.0" layoutY="163.0" mnemonicParsing="false" onAction="#onBackup" text="备份数据库到C盘根目录" />
+    <Button layoutX="83.0" layoutY="111.0" mnemonicParsing="false" onAction="#checkallStudents" prefHeight="30.0" prefWidth="181.0" text="显示所有学生" />
+    <Button layoutX="119.0" layoutY="328.0" mnemonicParsing="false" onAction="#EXIT" text="退出管理页面" />
+    <Label layoutX="216.0" layoutY="384.0" prefHeight="13.0" prefWidth="117.0" text="Designed by 南方四人组" textFill="#000000af">
       <font>
         <Font size="9.0" />
       </font>
     </Label>
-    <Label fx:id="result" layoutX="252.0" layoutY="100.0" />
-    <Button layoutX="268.0" layoutY="253.0" mnemonicParsing="false" onAction="#onRepair" text="从C盘根目录还原数据库" />
+    <Label fx:id="result" layoutX="245.0" layoutY="65.0" />
+    <Button layoutX="84.0" layoutY="215.0" mnemonicParsing="false" onAction="#onRepair" text="从C盘根目录还原数据库" />
   </children>
 </AnchorPane>
