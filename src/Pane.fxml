@@ -11,7 +11,7 @@
     <Button layoutX="83.0" layoutY="268.0" mnemonicParsing="false" onAction="#closeStudents" prefHeight="30.0" prefWidth="181.0" text="清空学生数据库" />
     <Button layoutX="83.0" layoutY="60.0" mnemonicParsing="false" onAction="#addStudents" text="增添学生" />
     <Button layoutX="185.0" layoutY="60.0" mnemonicParsing="false" onAction="#deleteStudents" text="删除学生" />
-    <Button layoutX="83.0" layoutY="163.0" mnemonicParsing="false" onAction="#onBackup" text="备份数据库到C盘根目录" />
+    <Button layoutX="83.0" layoutY="163.0" mnemonicParsing="false" onAction="#onBackup" text="备份数据库到以下位置" />
     <Button layoutX="83.0" layoutY="111.0" mnemonicParsing="false" onAction="#checkallStudents" prefHeight="30.0" prefWidth="181.0" text="显示所有学生" />
     <Button layoutX="119.0" layoutY="328.0" mnemonicParsing="false" onAction="#EXIT" text="退出管理页面" />
     <Label layoutX="216.0" layoutY="384.0" prefHeight="13.0" prefWidth="117.0" text="Designed by 南方四人组" textFill="#000000af">
@@ -20,6 +20,8 @@
       </font>
     </Label>
     <Label fx:id="result" layoutX="245.0" layoutY="65.0" />
-    <Button layoutX="84.0" layoutY="215.0" mnemonicParsing="false" onAction="#onRepair" text="从C盘根目录还原数据库" />
+    <Button layoutX="83.0" layoutY="189.0" mnemonicParsing="false" onAction="#onRepair" text="从以下位置还原数据库" />
+      <TextField fx:id="backPath" layoutX="62.0" layoutY="236.0" prefHeight="23.0" prefWidth="247.0" text="C:\\StudentsBackup.csv" />
+      <Label layoutX="14.0" layoutY="221.0" text="备份文件路径" />
   </children>
 </AnchorPane>

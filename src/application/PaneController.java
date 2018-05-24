@@ -28,6 +28,12 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class PaneController {//管理系统面板
+
+	@FXML
+	private TextField backPath ;
+	public String bp ;
+
+
 	private Stage stage;
 	public void init(MenuController controller, Stage stage){
 		this.stage = stage;
@@ -130,7 +136,7 @@ public class PaneController {//管理系统面板
 	@FXML
 	private void checkallStudents() throws FileNotFoundException {//显示所有学生数据
         int i = 0;
-		
+
 		File csv = new File("Students.csv");
         ArrayList<Student> list = new ArrayList();
         Output.readCSV("Students.csv", list);
@@ -160,7 +166,7 @@ public class PaneController {//管理系统面板
         Button[] bt3= new Button[i];
         int j;
         String[] Num=new String[i];//新建数组储存学号（j会销毁不能在onAbsent（）直接用）
-        
+
 
             for(j =0; j <i;j++){
                 stu[j] =list.get(j);
@@ -220,7 +226,7 @@ public class PaneController {//管理系统面板
         			}
                 });
             }
-        
+
         Button bt = new Button("out");
         pane.add(bt, 2, j + 1);
 
@@ -250,13 +256,16 @@ public class PaneController {//管理系统面板
         Scene scene = new Scene(sp);
         stage.setScene(scene);
     }
+
 	@FXML
 	private void onBackup()throws IOException{//备份数据库
+
+		bp = backPath.getText();
 		File oldf=new File("Students.csv");
-		File newf=new File("C:\\StudentsBackup.csv");//新文件路径（注意要用 \\来代替\，转义字符）
-		
+		File newf=new File(bp);//新文件路径（注意要用 \\来代替\，转义字符）
+
 		copyfile(oldf,newf);;
-		
+
 
 
 	}
@@ -279,7 +288,7 @@ public class PaneController {//管理系统面板
 
 		}
 	private void onAbsent(String Number) throws FileNotFoundException, Exception {//缺勤次数+1
-        
+
 		File csv = new File("Students.csv");
         ArrayList<Student> list = new ArrayList();
         Output.readCSV("Students.csv", list);
@@ -288,7 +297,7 @@ public class PaneController {//管理系统面板
 
 
         Student[] stu = new Student[i];
-        
+
             for(int j =0; j < i;j++){
                 stu[j] = list.get(j);
                 if(Number.compareTo(stu[j].GetNumber()) == 0){
@@ -296,9 +305,9 @@ public class PaneController {//管理系统面板
                     		stu[j].GetNumber(), stu[j].GetScore(),(stu[j].GetAbsent()+1));
                 }
             }
-        
 
-        
+
+
 
         if(i == 0){
             try (PrintWriter output = new PrintWriter(csv)) {
@@ -315,7 +324,7 @@ public class PaneController {//管理系统面板
     }
 
 	void onPlus(String Number) throws FileNotFoundException, Exception {//加一分
-        
+
         File csv = new File("Students.csv");
         ArrayList<Student> list = new ArrayList();
         Output.readCSV("Students.csv", list);
@@ -324,7 +333,7 @@ public class PaneController {//管理系统面板
 
 
         Student[] stu = new Student[i];
-        
+
             for(int j =0; j < i;j++){
                 stu[j] =list.get(j);
                 if(Number.compareTo(stu[j].GetNumber()) == 0){
@@ -332,9 +341,9 @@ public class PaneController {//管理系统面板
                     		stu[j].GetNumber(), (stu[j].GetScore()+1),(stu[j].GetAbsent()));
                 }
             }
-        
 
-        
+
+
 
         if(i == 0){
             try (PrintWriter output = new PrintWriter(csv)) {
@@ -351,7 +360,7 @@ public class PaneController {//管理系统面板
     }
 
 	void onSubtract(String Number) throws FileNotFoundException, Exception {//扣一分
-        
+
         File csv = new File("Students.csv");
         ArrayList<Student> list = new ArrayList();
         Output.readCSV("Students.csv", list);
@@ -360,7 +369,7 @@ public class PaneController {//管理系统面板
 
 
         Student[] stu = new Student[i];
-        
+
             for(int j =0; j < i;j++){
                 stu[j] = list.get(j);
                 if(Number.compareTo(stu[j].GetNumber()) == 0){
@@ -368,9 +377,9 @@ public class PaneController {//管理系统面板
                     		stu[j].GetNumber(), (stu[j].GetScore()-1),(stu[j].GetAbsent()));
                 }
             }
-        
 
-        
+
+
 
         if(i == 0){
             try (PrintWriter output = new PrintWriter(csv)) {
@@ -389,6 +398,9 @@ public class PaneController {//管理系统面板
 
 	@FXML
 	private void onRepair(){//从F盘根目录的备份恢复
+
+		bp=backPath.getText();
+		System.out.println(bp);
 		Pane pane = new Pane();
         Text text = new Text(200, 200, "你确定要还原所有数据！");
         text.setFill(Color.RED);
@@ -408,12 +420,12 @@ public class PaneController {//管理系统面板
 
         bt1.setOnAction(e -> {
             try {
-            	File oldf=new File("C:\\StudentsBackup.csv");
+            	File oldf=new File(bp);
         		File newf=new File("Students.csv");//新文件路径（注意要用 \\来代替\，转义字符）
-        		
+
         		copyfile(oldf,newf);;
-        		
-        		
+
+
 
 
         		Text text2 = new Text(100, 100, "程序已将数据还原！");
@@ -469,7 +481,7 @@ public class PaneController {//管理系统面板
         	ex.printStackTrace();
         }
 	}
-	
-	
+
+
 
 }
