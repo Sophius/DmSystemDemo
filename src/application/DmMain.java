@@ -6,6 +6,8 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 //开发与更新记录
+//0524 增加了防止重复注册的功能
+//0524 增加了备份路径修改，增加了不合格式的注册提示
 //0517 增加修改时错误提示
 //0517 增加了滚动条-许嘉熙
 //0517 将txt储存改为csv储存，读取修改更方便 -许嘉熙

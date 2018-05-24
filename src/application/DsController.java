@@ -41,12 +41,38 @@ public class DsController {//注册登录页面
 	public void init(DsController controller, Stage stage){
 		this.stage = stage;
 	}
-
 	@FXML
-	private void signin(ActionEvent event) throws IOException {
+	private void signin() throws IOException {
+		String TN = setName.getText();
+		String TP = setPass.getText();
+		File csv = new File("Teachers.csv");
+        ArrayList<Teacher> list = new ArrayList<Teacher>();
+        Output.readCSV2("Teachers.csv", list);
+        int i = list.size();
+        Teacher[] tea = new Teacher[i];
+        for(int j =0; j < i;j++){
+        	tea[j] = list.get(j);
+        	if(TN.compareTo(tea[j].GetName()) == 0) {
+        		warnLabel.setText("此用户名已被使用");
+        		return;
+        	}
+       
+        }
+        
+		if(TP == null||TN == null||TP.indexOf(" ")!=-1||TN.indexOf(" ")!=-1||TP.indexOf(",")!=-1||TN.indexOf(",")!=-1) {
+			warnLabel.setText("请按正确格式输入，不要输入空格和逗号");
+		}
+		
+		else {
+			signin1(TN,TP);
+		}
+	}
+	
+	private void signin1(String TN,String TP) throws IOException {
 
-		Teacher tea = new Teacher(setName.getText(), setPass.getText());//使用自定义的类暂时储存数据
+		Teacher tea = new Teacher(TN,TP);//使用自定义的类暂时储存数据
 
+		
       
 
        try (FileWriter out = new FileWriter("Teachers.csv",true)) {
@@ -54,10 +80,11 @@ public class DsController {//注册登录页面
            out.write(tea.GetName() + ",");
 
            out.write(tea.GetPass() + "\r\n");
+           warnLabel.setText("注册成功");
        }
 
        
-       warnLabel.setText("注册成功");
+       
 	}
 
 	@FXML
