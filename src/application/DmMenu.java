@@ -58,7 +58,7 @@ public class DmMenu {
         pane.setHgap(20);
         pane.setVgap(10);
 
-        pane.add(new Label("次序") , 0, 0);
+        
         pane.add(new Label("姓名"), 1, 0);
         pane.add(new Label("班级"), 2, 0);
         pane.add(new Label("学号"), 3, 0);
@@ -93,7 +93,7 @@ public class DmMenu {
             bt1=new Button("缺席");
             bt2=new Button("+1");
             bt3=new Button("-1");
-            pane.add(new Label("" +  j), 0,  1);
+            
             pane.add(text[0], 1,  1);
             pane.add(text[1], 2,  1);
             pane.add(text[2], 3,  1);

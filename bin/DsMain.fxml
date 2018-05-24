@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="scene_1" prefHeight="250.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.DsController">
+<AnchorPane fx:id="scene_1" prefHeight="250.0" prefWidth="400.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="application.DsController">
   <children>
     <Button fx:id="showBtn" layoutX="257.0" layoutY="171.0" mnemonicParsing="false" onAction="#onShowCon" prefHeight="30.0" prefWidth="78.0" text="登录" />
     <Label layoutX="46.0" layoutY="45.0" text="User Name:" />
@@ -15,5 +15,10 @@
     <TextField fx:id="setPass" layoutX="156.0" layoutY="85.0" />
     <Button layoutX="69.0" layoutY="171.0" mnemonicParsing="false" onAction="#signin" prefHeight="30.0" prefWidth="78.0" text="注册" />
     <Label fx:id="warnLabel" layoutX="185.0" layoutY="137.0" text="" textFill="RED" />
+    <Button layoutX="340.0" layoutY="222.0" mnemonicParsing="false" onAction="#onVer" text="版本说明">
+      <font>
+        <Font size="8.0" />
+      </font>
+    </Button>
   </children>
 </AnchorPane>

@@ -401,20 +401,17 @@ public class PaneController {//管理系统面板
 
 		bp=backPath.getText();
 		System.out.println(bp);
-		Pane pane = new Pane();
-        Text text = new Text(200, 200, "你确定要还原所有数据！");
+		GridPane pane = new GridPane();
+        Text text = new Text( "你确定要还原所有数据！");
         text.setFill(Color.RED);
         text.setFont(Font.font(20));//定义字体大小
 
 
-        Button bt1 = new Button("Ok");
-        Button bt2 = new Button("no");
-        bt1.setLayoutX(200);
-        bt1.setLayoutY(230);
-        bt2.setLayoutX(350);
-        bt2.setLayoutY(230);
-
-        pane.getChildren().addAll(text, bt1, bt2);
+        Button bt1 = new Button("Yes");
+        Button bt2 = new Button("No");
+        pane.add(text, 0, 0);
+        pane.add(bt1, 0, 1);
+        pane.add(bt2, 1, 1);
         Scene scene = new Scene(pane);
         stage.setScene(scene);
 

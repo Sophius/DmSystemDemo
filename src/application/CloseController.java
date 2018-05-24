@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.scene.layout.GridPane;
 
 public class CloseController {
 	private Stage stage;
@@ -25,15 +26,15 @@ public class CloseController {
 
         
 
-        Text text = new Text(100, 100, "程序已将所有数据删除！");
+        Text text = new Text( "程序已将所有数据删除！");
         Button bt1 = new Button("确定");
 
-        bt1.setLayoutX(130);
-        bt1.setLayoutY(130);
+        
 
 
-        Pane pane = new Pane();
-        pane.getChildren().addAll(text, bt1);
+        GridPane pane = new GridPane();
+        pane.add(text,0,0);
+        pane.add(bt1, 0, 1);
         Scene scene = new Scene(pane,350, 300);
 
         stage.setScene(scene);
