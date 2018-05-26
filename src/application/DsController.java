@@ -32,7 +32,7 @@ public class DsController {//注册登录页面
 	@FXML
 	private Label warnLabel;
 
-	public String vers = "//开发与更新记录\r\n" +
+	public String vers = "//开发与更新记录V2.2 2018.5.24\r\n" +
 			"//0524 增加了版本说明 修复了小BUG-许嘉熙\r\n" +
 			"//0524 增加了防止重复注册的功能 -许嘉熙\r\n" + 
 			"//0524 增加了备份路径修改，增加了不合格式的注册提示 -许嘉熙\r\n" + 
