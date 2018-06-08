@@ -78,7 +78,7 @@ public class DsController {//注册登录页面
        
         }
         
-		if(TP == null||TN == null||TP.indexOf(" ")!=-1||TN.indexOf(" ")!=-1||TP.indexOf(",")!=-1||TN.indexOf(",")!=-1) {
+		if(TP.length()==0||TN .length()==0||TP.indexOf(" ")!=-1||TN.indexOf(" ")!=-1||TP.indexOf(",")!=-1||TN.indexOf(",")!=-1) {
 			warnLabel.setText("请按正确格式输入，不要输入空格和逗号");
 		}
 		
@@ -152,6 +152,7 @@ public class DsController {//注册登录页面
 			conStage.setScene(new Scene(conRoot));
 			conRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			conStage.show();
+			stage.close();
 
 		} catch(Exception e) {
 			e.printStackTrace();
