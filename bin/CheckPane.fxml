@@ -8,7 +8,7 @@
 <AnchorPane prefHeight="354.0" prefWidth="386.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AddController">
    <children>
       <Label layoutX="118.0" layoutY="88.0" text="输入要操作的学生学号" />
-      <TextField fx:id="setNumber" layoutX="92.0" layoutY="147.0" />
+      <TextField fx:id="setNumber" layoutX="93.0" layoutY="147.0" />
       <Button layoutX="153.0" layoutY="220.0" mnemonicParsing="false" onAction="#onCheck" prefHeight="47.0" prefWidth="81.0" text="ok" />
    </children>
 </AnchorPane>
