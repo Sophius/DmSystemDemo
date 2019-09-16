@@ -1,4 +1,4 @@
-package application;
+ï»¿package application;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -21,7 +21,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class DsController {//×¢²áµÇÂ¼Ò³Ãæ
+public class DsController {//æ³¨å†Œç™»å½•é¡µé¢
 	@FXML
     private Button showBtn;
 	@FXML
@@ -32,26 +32,26 @@ public class DsController {//×¢²áµÇÂ¼Ò³Ãæ
 	@FXML
 	private Label warnLabel;
 
-	public String vers = "//¿ª·¢Óë¸üÐÂ¼ÇÂ¼V2.2 2018.5.24\r\n" +
-			"//0524 Ôö¼ÓÁË°æ±¾ËµÃ÷ ÐÞ¸´ÁËÐ¡BUG-Ðí¼ÎÎõ\r\n" +
-			"//0524 Ôö¼ÓÁË·ÀÖ¹ÖØ¸´×¢²áµÄ¹¦ÄÜ -Ðí¼ÎÎõ\r\n" + 
-			"//0524 Ôö¼ÓÁË±¸·ÝÂ·¾¶ÐÞ¸Ä£¬Ôö¼ÓÁË²»ºÏ¸ñÊ½µÄ×¢²áÌáÊ¾ -Ðí¼ÎÎõ\r\n" + 
-			"//0517 Ôö¼ÓÐÞ¸ÄÊ±´íÎóÌáÊ¾ -Ðí¼ÎÎõ\r\n" + 
-			"//0517 Ôö¼ÓÁË¹ö¶¯Ìõ-Ðí¼ÎÎõ\r\n" + 
-			"//0517 ½«txt´¢´æ¸ÄÎªcsv´¢´æ£¬¶ÁÈ¡ÐÞ¸Ä¸ü·½±ã -Ðí¼ÎÎõ\r\n" + 
-			"//0516 ¼¯³ÉÁËoutput¹¦ÄÜ -Ðí¼ÎÎõ\r\n" + 
-			"//0502 cssÎÄ¼þÃÀ»¯ÁË½çÃæ -Ðí¼ÎÎõ\r\n" + 
-			"//0502 Ôö¼ÓÁËÊ±ÖÓ¹¦ÄÜ -Ðí¼ÎÎõ\r\n" + 
-			"//0424 ÐÞ¸´ÁËÉÏ´«GithubÊ±·¢ÉúµÄÎ´ÖªBug -Ðí¼ÎÎõ\r\n" + 
-			"//0424 Ôö¼ÓÁË¼Ó¼õ·Ö¹¦ÄÜ°´Å¥ - Ðí¼ÎÎõ\r\n" + 
-			"//0420 Ôö¼ÓÁËËæ»úµãÃû¹¦ÄÜ -Ðí¼ÎÎõ\r\n" + 
-			"//0420 Ôö¼ÓÁËµ¥¶ÀµãÃûÃæ°å -ÕÅÐÀÓè\r\n" + 
-			"//0419 Ôö¼ÓÁË»¹Ô­¹¦ÄÜ£¬¸Ä±äÁË¸´ÖÆÎÄ¼þµÄ·½·¨£¬ÐÞ¸´ÁË»¹Ô­ºóÎÞ·¨¶ÁÈ¡µÄBug -Ðí¼ÎÎõ\r\n" + 
-			"//0419 Ôö¼ÓÁËÈ±ÇÚ¼ÇÂ¼¹¦ÄÜ -Ðí¼ÎÎõ\r\n" + 
-			"//0418 ¸Ä±äÁËÃæ°å´ò¿ª¹Ø±ÕµÄ·½Ê½ºÍÊ±Ðò -ÕÅÐÀÓè Ðí¼ÎÎõ\r\n" + 
-			"//0418 Ôö¼ÓÁË½ÌÊ¦µÇÂ¼ÏµÍ³×¢²áºÍµÇÂ¼¹¦ÄÜ\r\n" + 
-			"//0418 Ôö¼ÓÁËµÇÂ¼½çÃæ ÕÅÐÀÓè\r\n" + 
-			"//0417 ¿ª·¢³ö¹ÜÀíÃæ°å³õ°æ -Ðí¼ÎÎõ\r\n" ;
+	public String vers = "//å¼€å‘ä¸Žæ›´æ–°è®°å½•V2.2 2018.5.24\r\n" +
+			"//0524 å¢žåŠ äº†ç‰ˆæœ¬è¯´æ˜Ž ä¿®å¤äº†å°BUG-è®¸å˜‰ç†™\r\n" +
+			"//0524 å¢žåŠ äº†é˜²æ­¢é‡å¤æ³¨å†Œçš„åŠŸèƒ½ -è®¸å˜‰ç†™\r\n" + 
+			"//0524 å¢žåŠ äº†å¤‡ä»½è·¯å¾„ä¿®æ”¹ï¼Œå¢žåŠ äº†ä¸åˆæ ¼å¼çš„æ³¨å†Œæç¤º -è®¸å˜‰ç†™\r\n" + 
+			"//0517 å¢žåŠ ä¿®æ”¹æ—¶é”™è¯¯æç¤º -è®¸å˜‰ç†™\r\n" + 
+			"//0517 å¢žåŠ äº†æ»šåŠ¨æ¡-è®¸å˜‰ç†™\r\n" + 
+			"//0517 å°†txtå‚¨å­˜æ”¹ä¸ºcsvå‚¨å­˜ï¼Œè¯»å–ä¿®æ”¹æ›´æ–¹ä¾¿ -è®¸å˜‰ç†™\r\n" + 
+			"//0516 é›†æˆäº†outputåŠŸèƒ½ -è®¸å˜‰ç†™\r\n" + 
+			"//0502 cssæ–‡ä»¶ç¾ŽåŒ–äº†ç•Œé¢ -è®¸å˜‰ç†™\r\n" + 
+			"//0502 å¢žåŠ äº†æ—¶é’ŸåŠŸèƒ½ -è®¸å˜‰ç†™\r\n" + 
+			"//0424 ä¿®å¤äº†ä¸Šä¼ Githubæ—¶å‘ç”Ÿçš„æœªçŸ¥Bug -è®¸å˜‰ç†™\r\n" + 
+			"//0424 å¢žåŠ äº†åŠ å‡åˆ†åŠŸèƒ½æŒ‰é’® - è®¸å˜‰ç†™\r\n" + 
+			"//0420 å¢žåŠ äº†éšæœºç‚¹ååŠŸèƒ½ -è®¸å˜‰ç†™\r\n" + 
+			"//0420 å¢žåŠ äº†å•ç‹¬ç‚¹åé¢æ¿ -å¼ æ¬£äºˆ\r\n" + 
+			"//0419 å¢žåŠ äº†è¿˜åŽŸåŠŸèƒ½ï¼Œæ”¹å˜äº†å¤åˆ¶æ–‡ä»¶çš„æ–¹æ³•ï¼Œä¿®å¤äº†è¿˜åŽŸåŽæ— æ³•è¯»å–çš„Bug -è®¸å˜‰ç†™\r\n" + 
+			"//0419 å¢žåŠ äº†ç¼ºå‹¤è®°å½•åŠŸèƒ½ -è®¸å˜‰ç†™\r\n" + 
+			"//0418 æ”¹å˜äº†é¢æ¿æ‰“å¼€å…³é—­çš„æ–¹å¼å’Œæ—¶åº -å¼ æ¬£äºˆ è®¸å˜‰ç†™\r\n" + 
+			"//0418 å¢žåŠ äº†æ•™å¸ˆç™»å½•ç³»ç»Ÿæ³¨å†Œå’Œç™»å½•åŠŸèƒ½\r\n" + 
+			"//0418 å¢žåŠ äº†ç™»å½•ç•Œé¢ å¼ æ¬£äºˆ\r\n" + 
+			"//0417 å¼€å‘å‡ºç®¡ç†é¢æ¿åˆç‰ˆ -è®¸å˜‰ç†™\r\n" ;
 
 	private Stage stage;
 	public Stage stage2 = new Stage();
@@ -71,7 +71,7 @@ public class DsController {//×¢²áµÇÂ¼Ò³Ãæ
         for(int j =0; j < i;j++){
         	tea[j] = list.get(j);
         	if(TN.compareTo(tea[j].GetName()) == 0) {
-        		warnLabel.setText("´ËÓÃ»§ÃûÒÑ±»Ê¹ÓÃ");
+        		warnLabel.setText("æ­¤ç”¨æˆ·åå·²è¢«ä½¿ç”¨");
         		return;
         	}
         	
@@ -79,7 +79,7 @@ public class DsController {//×¢²áµÇÂ¼Ò³Ãæ
         }
         
 		if(TP.length()==0||TN .length()==0||TP.indexOf(" ")!=-1||TN.indexOf(" ")!=-1||TP.indexOf(",")!=-1||TN.indexOf(",")!=-1) {
-			warnLabel.setText("Çë°´ÕýÈ·¸ñÊ½ÊäÈë£¬²»ÒªÊäÈë¿Õ¸ñºÍ¶ººÅ");
+			warnLabel.setText("è¯·æŒ‰æ­£ç¡®æ ¼å¼è¾“å…¥ï¼Œä¸è¦è¾“å…¥ç©ºæ ¼å’Œé€—å·");
 		}
 		
 		else {
@@ -89,7 +89,7 @@ public class DsController {//×¢²áµÇÂ¼Ò³Ãæ
 	
 	private void signin1(String TN,String TP) throws IOException {
 
-		Teacher tea = new Teacher(TN,TP);//Ê¹ÓÃ×Ô¶¨ÒåµÄÀàÔÝÊ±´¢´æÊý¾Ý
+		Teacher tea = new Teacher(TN,TP);//ä½¿ç”¨è‡ªå®šä¹‰çš„ç±»æš‚æ—¶å‚¨å­˜æ•°æ®
 
 		
       
@@ -99,7 +99,7 @@ public class DsController {//×¢²áµÇÂ¼Ò³Ãæ
            out.write(tea.GetName() + ",");
 
            out.write(tea.GetPass() + "\r\n");
-           warnLabel.setText("×¢²á³É¹¦");
+           warnLabel.setText("æ³¨å†ŒæˆåŠŸ");
        }
 
        
@@ -126,13 +126,13 @@ public class DsController {//×¢²áµÇÂ¼Ò³Ãæ
                 	if(Password.compareTo(tea[j].GetPass()) == 0){
                 		signup();
                 	}else {
-                		warnLabel.setText("ÃÜÂë´íÎó");
+                		warnLabel.setText("å¯†ç é”™è¯¯");
                 	}
                 	break;
                 }
             }
             if(j==i){
-            	warnLabel.setText("Î´×¢²áÕË»§");
+            	warnLabel.setText("æœªæ³¨å†Œè´¦æˆ·");
             }
         }
 	
@@ -148,7 +148,7 @@ public class DsController {//×¢²áµÇÂ¼Ò³Ãæ
 
 
 
-			conStage.setTitle("Ö÷²Ëµ¥");
+			conStage.setTitle("ä¸»èœå•");
 			conStage.setScene(new Scene(conRoot));
 			conRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			conStage.show();

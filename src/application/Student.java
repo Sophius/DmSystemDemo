@@ -1,7 +1,7 @@
-package application;
+ï»¿package application;
 
 public class Student {
-	//½¨Á¢Ñ§ÉúÀà£¬°üº¬ÊôÐÔÐÕÃû¡¢°à¼¶¡¢Ñ§ºÅ¡¢³É¼¨¡¢È±Ï¯´ÎÊýºÍÐòºÅ¡££¨ÐòºÅ±¾À´´òËãÓÃÓÚËæ»úµãÃû£¬ºóÓÃÊý×éÐÎÊ½ÊµÏÖ£©
+	//å»ºç«‹å­¦ç”Ÿç±»ï¼ŒåŒ…å«å±žæ€§å§“åã€ç­çº§ã€å­¦å·ã€æˆç»©ã€ç¼ºå¸­æ¬¡æ•°å’Œåºå·ã€‚ï¼ˆåºå·æœ¬æ¥æ‰“ç®—ç”¨äºŽéšæœºç‚¹åï¼ŒåŽç”¨æ•°ç»„å½¢å¼å®žçŽ°ï¼‰
 	private String Name;
     private String Number;
     private String Class;

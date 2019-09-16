@@ -1,4 +1,4 @@
-package application;
+ï»¿package application;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,7 +27,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class PaneController {//¹ÜÀíÏµÍ³Ãæ°å
+public class PaneController {//ç®¡ç†ç³»ç»Ÿé¢æ¿
 
 	@FXML
 	private TextField backPath ;
@@ -49,11 +49,11 @@ public class PaneController {//¹ÜÀíÏµÍ³Ãæ°å
 
 
 	@FXML
-	 private void EXIT() {//¹Ø±Õ½çÃæ£¬½áÊø³ÌĞò
+	 private void EXIT() {//å…³é—­ç•Œé¢ï¼Œç»“æŸç¨‹åº
         stage.close();
     }
 	@FXML
-	 private void closeStudents() {//Çå³ıÊı¾İ¿â
+	 private void closeStudents() {//æ¸…é™¤æ•°æ®åº“
 		try {
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("/ClosePane.fxml"));
     		Parent closeRoot = loader.load();
@@ -64,7 +64,7 @@ public class PaneController {//¹ÜÀíÏµÍ³Ãæ°å
 
 
 
-			closeStage.setTitle("Çå³şÊı¾İ¿â");
+			closeStage.setTitle("æ¸…æ¥šæ•°æ®åº“");
 			closeStage.setScene(new Scene(closeRoot));
 			closeStage.show();
 
@@ -73,7 +73,7 @@ public class PaneController {//¹ÜÀíÏµÍ³Ãæ°å
 		}
    }
 	@FXML
-	 private void addStudents() {//Ìí¼ÓÑ§Éú
+	 private void addStudents() {//æ·»åŠ å­¦ç”Ÿ
 		try {
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("/AddPane.fxml"));
     		Parent addRoot = loader.load();
@@ -93,7 +93,7 @@ public class PaneController {//¹ÜÀíÏµÍ³Ãæ°å
 		}
    }
 	@FXML
-	 private void deleteStudents() {//É¾³ıÑ§Éú£¬ÓëAddPane¹²ÓÃÒ»¸öcontroller
+	 private void deleteStudents() {//åˆ é™¤å­¦ç”Ÿï¼Œä¸AddPaneå…±ç”¨ä¸€ä¸ªcontroller
 		try {
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("/DelPane.fxml"));
     		Parent addRoot = loader.load();
@@ -104,7 +104,7 @@ public class PaneController {//¹ÜÀíÏµÍ³Ãæ°å
 
 
 
-			addStage.setTitle("É¾³ıÑ§Éú");
+			addStage.setTitle("åˆ é™¤å­¦ç”Ÿ");
 			addStage.setScene(new Scene(addRoot));
 			addStage.show();
 
@@ -113,7 +113,7 @@ public class PaneController {//¹ÜÀíÏµÍ³Ãæ°å
 		}
    }
 	/*@FXML
-	 private void amendStudents() {//²é¿´ĞŞ¸ÄÑ§Éú£¬ÓëAddPane¹²ÓÃÒ»¸öcontroller
+	 private void amendStudents() {//æŸ¥çœ‹ä¿®æ”¹å­¦ç”Ÿï¼Œä¸AddPaneå…±ç”¨ä¸€ä¸ªcontroller
 		try {
     		FXMLLoader loader = new FXMLLoader(getClass().getResource("/AmdPane.fxml"));
     		Parent amdRoot = loader.load();
@@ -124,7 +124,7 @@ public class PaneController {//¹ÜÀíÏµÍ³Ãæ°å
 
 
 
-			amdStage.setTitle("²é¿´ÓëĞŞ¸Ä");
+			amdStage.setTitle("æŸ¥çœ‹ä¸ä¿®æ”¹");
 			amdStage.setScene(new Scene(amdRoot));
 			amdStage.show();
 
@@ -134,7 +134,7 @@ public class PaneController {//¹ÜÀíÏµÍ³Ãæ°å
    }*/
 
 	@FXML
-	private void checkallStudents() throws FileNotFoundException {//ÏÔÊ¾ËùÓĞÑ§ÉúÊı¾İ
+	private void checkallStudents() throws FileNotFoundException {//æ˜¾ç¤ºæ‰€æœ‰å­¦ç”Ÿæ•°æ®
         int i = 0;
 
 		File csv = new File("Students.csv");
@@ -150,22 +150,22 @@ public class PaneController {//¹ÜÀíÏµÍ³Ãæ°å
         pane.setHgap(20);
         pane.setVgap(10);
 
-        pane.add(new Label("´ÎĞò") , 0, 0);
-        pane.add(new Label("ĞÕÃû"), 1, 0);
-        pane.add(new Label("°à¼¶"), 2, 0);
-        pane.add(new Label("Ñ§ºÅ"), 3, 0);
-        pane.add(new Label("³É¼¨"), 4, 0);
-        pane.add(new Label("È±ÇÚÑ¡Ïî"), 5, 0);
-        pane.add(new Label("È±ÇÚ´ÎÊı"), 6, 0);
-        pane.add(new Label("¼Ó·Ö°´Å¥"), 7, 0);
-        pane.add(new Label("¿Û·Ö°´Å¥"), 8, 0);
+        pane.add(new Label("æ¬¡åº") , 0, 0);
+        pane.add(new Label("å§“å"), 1, 0);
+        pane.add(new Label("ç­çº§"), 2, 0);
+        pane.add(new Label("å­¦å·"), 3, 0);
+        pane.add(new Label("æˆç»©"), 4, 0);
+        pane.add(new Label("ç¼ºå‹¤é€‰é¡¹"), 5, 0);
+        pane.add(new Label("ç¼ºå‹¤æ¬¡æ•°"), 6, 0);
+        pane.add(new Label("åŠ åˆ†æŒ‰é’®"), 7, 0);
+        pane.add(new Label("æ‰£åˆ†æŒ‰é’®"), 8, 0);
         Student[] stu = new Student[i];
         Text[][] text = new Text[i][5];
         Button[] bt1= new Button[i];
         Button[] bt2= new Button[i];
         Button[] bt3= new Button[i];
         int j;
-        String[] Num=new String[i];//ĞÂ½¨Êı×é´¢´æÑ§ºÅ£¨j»áÏú»Ù²»ÄÜÔÚonAbsent£¨£©Ö±½ÓÓÃ£©
+        String[] Num=new String[i];//æ–°å»ºæ•°ç»„å‚¨å­˜å­¦å·ï¼ˆjä¼šé”€æ¯ä¸èƒ½åœ¨onAbsentï¼ˆï¼‰ç›´æ¥ç”¨ï¼‰
 
 
             for(j =0; j <i;j++){
@@ -175,7 +175,7 @@ public class PaneController {//¹ÜÀíÏµÍ³Ãæ°å
                 text[j][2] = new Text(stu[j].GetNumber());
                 text[j][3] = new Text("" + stu[j].GetScore());
                 text[j][4] = new Text("" + stu[j].GetAbsent());
-                bt1[j]=new Button("È±ÇÚ");
+                bt1[j]=new Button("ç¼ºå‹¤");
                 bt2[j]=new Button("+1");
                 bt3[j]=new Button("-1");
                 pane.add(new Label("" + j ), 0, j + 1);
@@ -243,7 +243,7 @@ public class PaneController {//¹ÜÀíÏµÍ³Ãæ°å
 
 
 
-    			conStage.setTitle("¹ÜÀí²Ëµ¥");
+    			conStage.setTitle("ç®¡ç†èœå•");
     			conStage.setScene(new Scene(conRoot));
     			conRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
     			conStage.show();
@@ -258,11 +258,11 @@ public class PaneController {//¹ÜÀíÏµÍ³Ãæ°å
     }
 
 	@FXML
-	private void onBackup()throws IOException{//±¸·İÊı¾İ¿â
+	private void onBackup()throws IOException{//å¤‡ä»½æ•°æ®åº“
 
 		bp = backPath.getText();
 		File oldf=new File("Students.csv");
-		File newf=new File(bp);//ĞÂÎÄ¼şÂ·¾¶£¨×¢ÒâÒªÓÃ \\À´´úÌæ\£¬×ªÒå×Ö·û£©
+		File newf=new File(bp);//æ–°æ–‡ä»¶è·¯å¾„ï¼ˆæ³¨æ„è¦ç”¨ \\æ¥ä»£æ›¿\ï¼Œè½¬ä¹‰å­—ç¬¦ï¼‰
 
 		copyfile(oldf,newf);;
 
@@ -271,7 +271,7 @@ public class PaneController {//¹ÜÀíÏµÍ³Ãæ°å
 	}
 
 	@SuppressWarnings("resource")
-	public  void copyfile(File oldfile,File newfile) throws IOException{//´Óstream´¦Àí¸ÄÎªÁËChannel´¦Àí£¬È¥³ıÈßÓà¿Õ×Ö½Ú¡£
+	public  void copyfile(File oldfile,File newfile) throws IOException{//ä»streamå¤„ç†æ”¹ä¸ºäº†Channelå¤„ç†ï¼Œå»é™¤å†—ä½™ç©ºå­—èŠ‚ã€‚
 		FileChannel inputChannel = null;
         FileChannel outputChannel = null;
     try {
@@ -283,11 +283,11 @@ public class PaneController {//¹ÜÀíÏµÍ³Ãæ°å
         outputChannel.close();
     }
 
-		result.setText("±¸·İ³É¹¦");
+		result.setText("å¤‡ä»½æˆåŠŸ");
 		;
 
 		}
-	private void onAbsent(String Number) throws FileNotFoundException, Exception {//È±ÇÚ´ÎÊı+1
+	private void onAbsent(String Number) throws FileNotFoundException, Exception {//ç¼ºå‹¤æ¬¡æ•°+1
 
 		File csv = new File("Students.csv");
         ArrayList<Student> list = new ArrayList();
@@ -323,7 +323,7 @@ public class PaneController {//¹ÜÀíÏµÍ³Ãæ°å
 
     }
 
-	void onPlus(String Number) throws FileNotFoundException, Exception {//¼ÓÒ»·Ö
+	void onPlus(String Number) throws FileNotFoundException, Exception {//åŠ ä¸€åˆ†
 
         File csv = new File("Students.csv");
         ArrayList<Student> list = new ArrayList();
@@ -359,7 +359,7 @@ public class PaneController {//¹ÜÀíÏµÍ³Ãæ°å
 
     }
 
-	void onSubtract(String Number) throws FileNotFoundException, Exception {//¿ÛÒ»·Ö
+	void onSubtract(String Number) throws FileNotFoundException, Exception {//æ‰£ä¸€åˆ†
 
         File csv = new File("Students.csv");
         ArrayList<Student> list = new ArrayList();
@@ -397,14 +397,14 @@ public class PaneController {//¹ÜÀíÏµÍ³Ãæ°å
 
 
 	@FXML
-	private void onRepair(){//´ÓFÅÌ¸ùÄ¿Â¼µÄ±¸·İ»Ö¸´
+	private void onRepair(){//ä»Fç›˜æ ¹ç›®å½•çš„å¤‡ä»½æ¢å¤
 
 		bp=backPath.getText();
 		System.out.println(bp);
 		GridPane pane = new GridPane();
-        Text text = new Text( "ÄãÈ·¶¨Òª»¹Ô­ËùÓĞÊı¾İ£¡");
+        Text text = new Text( "ä½ ç¡®å®šè¦è¿˜åŸæ‰€æœ‰æ•°æ®ï¼");
         text.setFill(Color.RED);
-        text.setFont(Font.font(20));//¶¨Òå×ÖÌå´óĞ¡
+        text.setFont(Font.font(20));//å®šä¹‰å­—ä½“å¤§å°
 
 
         Button bt1 = new Button("Yes");
@@ -418,15 +418,15 @@ public class PaneController {//¹ÜÀíÏµÍ³Ãæ°å
         bt1.setOnAction(e -> {
             try {
             	File oldf=new File(bp);
-        		File newf=new File("Students.csv");//ĞÂÎÄ¼şÂ·¾¶£¨×¢ÒâÒªÓÃ \\À´´úÌæ\£¬×ªÒå×Ö·û£©
+        		File newf=new File("Students.csv");//æ–°æ–‡ä»¶è·¯å¾„ï¼ˆæ³¨æ„è¦ç”¨ \\æ¥ä»£æ›¿\ï¼Œè½¬ä¹‰å­—ç¬¦ï¼‰
 
         		copyfile(oldf,newf);;
 
 
 
 
-        		Text text2 = new Text(100, 100, "³ÌĞòÒÑ½«Êı¾İ»¹Ô­£¡");
-                Button bt3 = new Button("È·¶¨");
+        		Text text2 = new Text(100, 100, "ç¨‹åºå·²å°†æ•°æ®è¿˜åŸï¼");
+                Button bt3 = new Button("ç¡®å®š");
 
                 bt3.setLayoutX(130);
                 bt3.setLayoutY(130);
@@ -458,7 +458,7 @@ public class PaneController {//¹ÜÀíÏµÍ³Ãæ°å
         });
 	}
 
-	private void BackToPane(){//»Øµ½¹ÜÀí²Ëµ¥
+	private void BackToPane(){//å›åˆ°ç®¡ç†èœå•
 		try {
         	FXMLLoader loader = new FXMLLoader(getClass().getResource("/Pane.fxml"));
     		Parent conRoot = loader.load();
@@ -469,7 +469,7 @@ public class PaneController {//¹ÜÀíÏµÍ³Ãæ°å
 
 
 
-			conStage.setTitle("¹ÜÀí²Ëµ¥");
+			conStage.setTitle("ç®¡ç†èœå•");
 			conStage.setScene(new Scene(conRoot));
 			conRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			conStage.show();

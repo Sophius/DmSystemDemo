@@ -1,4 +1,4 @@
-package application;
+ï»¿package application;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -31,16 +31,16 @@ public class DmMenu {
 
 
     @FXML
-    private void randomDm() throws FileNotFoundException{//Ëæ»úµãÃû1 ²úÉúiÒÔÄÚËæ»úÊı
+    private void randomDm() throws FileNotFoundException{//éšæœºç‚¹å1 äº§ç”Ÿiä»¥å†…éšæœºæ•°
     	int i = 0;
     	File csv = new File("Students.csv");
         ArrayList<Student> list = new ArrayList();
         Output.readCSV("Students.csv", list);
     	i=list.size();
-    	int num=(int)(Math.random()*i);//²úÉúËæ»úÊı
+    	int num=(int)(Math.random()*i);//äº§ç”Ÿéšæœºæ•°
     	randomDm2(num);
     }
-    private void randomDm2(int num) throws FileNotFoundException{//Ëæ»úµãÃû2
+    private void randomDm2(int num) throws FileNotFoundException{//éšæœºç‚¹å2
     	
     	
         
@@ -59,22 +59,22 @@ public class DmMenu {
         pane.setVgap(10);
 
         
-        pane.add(new Label("ĞÕÃû"), 1, 0);
-        pane.add(new Label("°à¼¶"), 2, 0);
-        pane.add(new Label("Ñ§ºÅ"), 3, 0);
-        pane.add(new Label("³É¼¨"), 4, 0);
-        pane.add(new Label("È±ÇÚÑ¡Ïî"), 5, 0);
-        pane.add(new Label("È±ÇÚ´ÎÊı"), 6, 0);
-        pane.add(new Label("¼Ó·Ö°´Å¥"), 7, 0);
-        pane.add(new Label("¿Û·Ö°´Å¥"), 8, 0);
+        pane.add(new Label("å§“å"), 1, 0);
+        pane.add(new Label("ç­çº§"), 2, 0);
+        pane.add(new Label("å­¦å·"), 3, 0);
+        pane.add(new Label("æˆç»©"), 4, 0);
+        pane.add(new Label("ç¼ºå‹¤é€‰é¡¹"), 5, 0);
+        pane.add(new Label("ç¼ºå‹¤æ¬¡æ•°"), 6, 0);
+        pane.add(new Label("åŠ åˆ†æŒ‰é’®"), 7, 0);
+        pane.add(new Label("æ‰£åˆ†æŒ‰é’®"), 8, 0);
         Student[] stu = new Student[i];
         Text[] text = new Text[5];
         Button bt1= new Button();
         Button bt2= new Button();
         Button bt3= new Button();
         int j = 0;
-        String[] Num=new String[i];//Êı×é´¢´æÑ§ºÅ
-        String[] Name=new String[i];//Êı×é´¢´æĞÕÃû
+        String[] Num=new String[i];//æ•°ç»„å‚¨å­˜å­¦å·
+        String[] Name=new String[i];//æ•°ç»„å‚¨å­˜å§“å
         
 
             for(j =0; j <i;j++){
@@ -84,13 +84,13 @@ public class DmMenu {
                 int k = j;
                 Num[k] = stu[j].GetNumber();
                 Name[k] = stu[j].GetName();
-                }//½«ĞÕÃûÑ§ºÅ´æÈëÊı×é
+                }//å°†å§“åå­¦å·å­˜å…¥æ•°ç»„
             text[0] = new Text(stu[num].GetName());
             text[1] = new Text(stu[num].GetClass());
             text[2] = new Text(stu[num].GetNumber());
             text[3] = new Text("" + stu[num].GetScore());
             text[4] = new Text("" + stu[num].GetAbsent());
-            bt1=new Button("È±Ï¯");
+            bt1=new Button("ç¼ºå¸­");
             bt2=new Button("+1");
             bt3=new Button("-1");
             
@@ -102,10 +102,10 @@ public class DmMenu {
             pane.add(text[4], 6,  1);
             pane.add(bt2,7, 1);
             pane.add(bt3,8, 1);
-                bt1.setOnAction(e -> {//È±ÇÚ´ÎÊı+1£¬Ë¢ĞÂÒ³Ãæ
+                bt1.setOnAction(e -> {//ç¼ºå‹¤æ¬¡æ•°+1ï¼Œåˆ·æ–°é¡µé¢
                     try {
                         MenuController.onAbsent(Num[num]);
-                        randomDm2(num);//Ë¢ĞÂÒ³Ãæ
+                        randomDm2(num);//åˆ·æ–°é¡µé¢
                     } catch (FileNotFoundException e1) {
                         // TODO Auto-generated catch block
                         e1.printStackTrace();
@@ -138,14 +138,14 @@ public class DmMenu {
                         e1.printStackTrace();
                     }
                 });
-                Button bt = new Button("ÏÂÒ»¸ö");
+                Button bt = new Button("ä¸‹ä¸€ä¸ª");
                 pane.add(bt, 2,  2);
 
 
 
                 bt.setOnAction(e -> {
                     try {
-						randomDm();//ÖØĞÂËæ»ú
+						randomDm();//é‡æ–°éšæœº
 					} catch (FileNotFoundException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
@@ -160,7 +160,7 @@ public class DmMenu {
 
 
     @FXML
-    private void listDm(){//Ë³ĞòµãÃû
+    private void listDm(){//é¡ºåºç‚¹å
         int i = 0;
         
         
@@ -179,15 +179,15 @@ public class DmMenu {
         pane.setHgap(20);
         pane.setVgap(10);
 
-        pane.add(new Label("´ÎĞò") , 0, 0);
-        pane.add(new Label("ĞÕÃû"), 1, 0);
-        pane.add(new Label("°à¼¶"), 2, 0);
-        pane.add(new Label("Ñ§ºÅ"), 3, 0);
-        pane.add(new Label("³É¼¨"), 4, 0);
-        pane.add(new Label("È±ÇÚÑ¡Ïî"), 5, 0);
-        pane.add(new Label("È±ÇÚ´ÎÊı"), 6, 0);
-        pane.add(new Label("¼Ó·Ö°´Å¥"), 7, 0);
-        pane.add(new Label("¿Û·Ö°´Å¥"), 8, 0);
+        pane.add(new Label("æ¬¡åº") , 0, 0);
+        pane.add(new Label("å§“å"), 1, 0);
+        pane.add(new Label("ç­çº§"), 2, 0);
+        pane.add(new Label("å­¦å·"), 3, 0);
+        pane.add(new Label("æˆç»©"), 4, 0);
+        pane.add(new Label("ç¼ºå‹¤é€‰é¡¹"), 5, 0);
+        pane.add(new Label("ç¼ºå‹¤æ¬¡æ•°"), 6, 0);
+        pane.add(new Label("åŠ åˆ†æŒ‰é’®"), 7, 0);
+        pane.add(new Label("æ‰£åˆ†æŒ‰é’®"), 8, 0);
         Student[] stu = new Student[i];
         Text[][] text = new Text[i][5];
         Button[] bt1= new Button[i];
@@ -205,7 +205,7 @@ public class DmMenu {
                 text[j][2] = new Text(stu[j].GetNumber());
                 text[j][3] = new Text("" + stu[j].GetScore());
                 text[j][4] = new Text("" + stu[j].GetAbsent());
-                bt1[j]=new Button("È±Ï¯");
+                bt1[j]=new Button("ç¼ºå¸­");
                 bt2[j]=new Button("+1");
                 bt3[j]=new Button("-1");
                 pane.add(new Label("" + j), 0, j + 1);
@@ -271,7 +271,7 @@ public class DmMenu {
         pane.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
         stage.setScene(scene);
     }
-    public void BackToMenu(){//»Øµ½Ö÷²Ëµ¥
+    public void BackToMenu(){//å›åˆ°ä¸»èœå•
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/Menu.fxml"));
             Parent conRoot = loader.load();
@@ -282,7 +282,7 @@ public class DmMenu {
 
 
 
-            conStage.setTitle("Ö÷²Ëµ¥");
+            conStage.setTitle("ä¸»èœå•");
             conStage.setScene(new Scene(conRoot));
             conRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             conStage.show();

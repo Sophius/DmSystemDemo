@@ -1,4 +1,4 @@
-package application;
+ï»¿package application;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -22,12 +22,12 @@ public class CloseController {
 	 private void onYes() throws FileNotFoundException{
 		File fl = new File("Students.csv");
         try (PrintWriter output = new PrintWriter(fl)) {
-        }//ÏòÎÄ¼şÖĞĞ´ÈëĞÂµÄÑ§ÉúĞÅÏ¢
+        }//å‘æ–‡ä»¶ä¸­å†™å…¥æ–°çš„å­¦ç”Ÿä¿¡æ¯
 
         
 
-        Text text = new Text( "³ÌĞòÒÑ½«ËùÓĞÊı¾İÉ¾³ı£¡");
-        Button bt1 = new Button("È·¶¨");
+        Text text = new Text( "ç¨‹åºå·²å°†æ‰€æœ‰æ•°æ®åˆ é™¤ï¼");
+        Button bt1 = new Button("ç¡®å®š");
 
         
 
@@ -44,11 +44,11 @@ public class CloseController {
    }
 
 	@FXML
-	 private void onNo() throws FileNotFoundException{//¹Ø±Õ½çÃæ£¬½áÊø³ÌĞò
+	 private void onNo() throws FileNotFoundException{//å…³é—­ç•Œé¢ï¼Œç»“æŸç¨‹åº
        stage.close();
    }
 
-	private void bt() {//¹Ø±Õ½çÃæ£¬½áÊø³ÌĞò
+	private void bt() {//å…³é—­ç•Œé¢ï¼Œç»“æŸç¨‹åº
         stage.close();
     }
 }

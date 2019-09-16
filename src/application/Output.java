@@ -1,4 +1,4 @@
-package application;
+ï»¿package application;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -119,21 +119,21 @@ public class Output {
 	}
 	
 	public static void writeCSV() {  
-	    // ¶¨ÒåÒ»¸öCSVÂ·¾¶  
+	    // å®šä¹‰ä¸€ä¸ªCSVè·¯å¾„  
 	    String csvFilePath = "D://StemQ.csv";  
 	    try {  
-	        // ´´½¨CSVĞ´¶ÔÏó ÀıÈç:CsvWriter(ÎÄ¼şÂ·¾¶£¬·Ö¸ô·û£¬±àÂë¸ñÊ½);  
+	        // åˆ›å»ºCSVå†™å¯¹è±¡ ä¾‹å¦‚:CsvWriter(æ–‡ä»¶è·¯å¾„ï¼Œåˆ†éš”ç¬¦ï¼Œç¼–ç æ ¼å¼);  
 	        CsvWriter csvWriter = new CsvWriter(csvFilePath, ',', Charset.forName("UTF-8"));  
-	        // Ğ´±íÍ·  
-	        String[] csvHeaders = { "±àºÅ", "ĞÕÃû", "ÄêÁä" };  
+	        // å†™è¡¨å¤´  
+	        String[] csvHeaders = { "ç¼–å·", "å§“å", "å¹´é¾„" };  
 	        csvWriter.writeRecord(csvHeaders);  
-	        // Ğ´ÄÚÈİ  
+	        // å†™å†…å®¹  
 	        for (int i = 0; i < 20; i++) {  
 	            String[] csvContent = { i + "000000", "StemQ", "1" + i };  
 	            csvWriter.writeRecord(csvContent);  
 	        }  
 	        csvWriter.close();  
-	        System.out.println("--------CSVÎÄ¼şÒÑ¾­Ğ´Èë--------");  
+	        System.out.println("--------CSVæ–‡ä»¶å·²ç»å†™å…¥--------");  
 	    } catch (IOException e) {  
 	        e.printStackTrace();  
 	    }  

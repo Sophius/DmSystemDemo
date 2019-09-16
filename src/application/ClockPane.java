@@ -1,4 +1,4 @@
-package application;
+ï»¿package application;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
@@ -13,15 +13,15 @@ public class ClockPane extends Pane{
     private int minute;
     private int second;
 
-    //ÉèÖÃÊ±ÖÓÃæ°åµÄ¿í¶ÈºÍ¸ß¶È
+    //è®¾ç½®æ—¶é’Ÿé¢æ¿çš„å®½åº¦å’Œé«˜åº¦
     private double w = 250, h = 250;
 
-    //¹¹Ôìº¯Êı
+    //æ„é€ å‡½æ•°
     public ClockPane() {
         setCurrentTime();
     }
 
-    //ÉèÖÃ´ø²ÎÊıµÄ¹¹Ôìº¯Êı
+    //è®¾ç½®å¸¦å‚æ•°çš„æ„é€ å‡½æ•°
     public ClockPane(int hour, int minute, int second) {
         this.hour = hour;
         this.minute = minute;
@@ -29,87 +29,87 @@ public class ClockPane extends Pane{
         paintClock();
     }
 
-    //·µ»ØĞ¡Ê±
+    //è¿”å›å°æ—¶
     public int getHour() {
         return hour;
     }
 
-    //·µ»Ø·ÖÖÓ
+    //è¿”å›åˆ†é’Ÿ
     public int getMinute() {
         return minute;
     }
 
-    //·µ»ØÃëÖÓ
+    //è¿”å›ç§’é’Ÿ
     public int getSecond() {
         return second;
     }
 
-    //ÉèÖÃÒ»¸öĞÂµÄĞ¡Ê±
+    //è®¾ç½®ä¸€ä¸ªæ–°çš„å°æ—¶
     public void setHour(int hour) {
         this.hour = hour;
         paintClock();
     }
 
-    //ÉèÖÃÒ»¸öĞÂµÄ·ÖÖÓ
+    //è®¾ç½®ä¸€ä¸ªæ–°çš„åˆ†é’Ÿ
     public void setMinute(int minute) {
         this.minute = minute;
         paintClock();
     }
 
-    //ÉèÖÃÒ»¸öĞÂµÄÃëÖÓ
+    //è®¾ç½®ä¸€ä¸ªæ–°çš„ç§’é’Ÿ
     public void setSecond(int second) {
         this.second = second;
         paintClock();
     }
 
-    //·µ»ØÊ±ÖÓÃæ°åµÄ¿í¶È
+    //è¿”å›æ—¶é’Ÿé¢æ¿çš„å®½åº¦
     public double getW() {
         return w;
     }
 
-    //ÉèÖÃÒ»¸öĞÂµÄÃæ°å¿í¶È
+    //è®¾ç½®ä¸€ä¸ªæ–°çš„é¢æ¿å®½åº¦
     public void setW(double w) {
         this.w = w;
         paintClock();
     }
 
-    //·µ»ØÊ±ÖÓÃæ°åµÄ¸ß¶È
+    //è¿”å›æ—¶é’Ÿé¢æ¿çš„é«˜åº¦
     public double getH() {
         return h;
     }
 
-    //ÉèÖÃÊ±ÖÓÃæ°åµÄ¸ß¶È
+    //è®¾ç½®æ—¶é’Ÿé¢æ¿çš„é«˜åº¦
     public void setH(double h) {
         this.h = h;
         paintClock();
     }
 
     public void setCurrentTime() {
-        //»ñÈ¡µ±Ç°Ê±¼ä
+        //è·å–å½“å‰æ—¶é—´
         Calendar calendar = new GregorianCalendar();
 
-        //ÉèÖÃµ±Ç°Ê±¼ä
+        //è®¾ç½®å½“å‰æ—¶é—´
         this.hour = calendar.get(Calendar.HOUR_OF_DAY);
         this.minute = calendar.get(Calendar.MINUTE);
         this.second = calendar.get(Calendar.SECOND);
 
-        //ÖØ»­
+        //é‡ç”»
         paintClock();
     }
 
     public void paintClock() {
-        //³õÊ¼»¯Ê±ÖÓ²ÎÊı
+        //åˆå§‹åŒ–æ—¶é’Ÿå‚æ•°
         double clockRadius = Math.min(w, h) * 0.8 * 0.5;
         double centerX = w / 2;
         double centerY = h / 2;
 
-        //ÏÔÊ¾µ±Ç°Ê±¼ä,²¢ÉèÖÃÊ±¼äÏÔÊ¾µÄÎ»ÖÃ
+        //æ˜¾ç¤ºå½“å‰æ—¶é—´,å¹¶è®¾ç½®æ—¶é—´æ˜¾ç¤ºçš„ä½ç½®
         String timeString = hour + ":" + minute + ":" + second;
         Label labelCurrentTime = new Label(timeString);
         labelCurrentTime.setLayoutX(centerX - 25);
         labelCurrentTime.setLayoutY(centerY + clockRadius + 5);
 
-        //»­Ô²
+        //ç”»åœ†
         Circle circle = new Circle(centerX, centerY, clockRadius);
         //circle.setFill(Color.WHITE);
         //circle.setStroke(Color.BLACK);
@@ -119,22 +119,22 @@ public class ClockPane extends Pane{
         Text t3 = new Text(centerX + clockRadius - 10, centerY + 5, "3");
         Text t4 = new Text(centerX - 3, centerY + clockRadius - 3, "6");
 
-        //»­ÃëÕë
-        double sLength = clockRadius * 0.8; //ÉèÖÃÃëÕëµÄ³¤¶È
+        //ç”»ç§’é’ˆ
+        double sLength = clockRadius * 0.8; //è®¾ç½®ç§’é’ˆçš„é•¿åº¦
         double secondX = centerX + sLength * Math.sin(second * (2 * Math.PI / 60.0));
         double secondY = centerY - sLength * Math.cos(second * (2 * Math.PI / 60.0));
         Line sLine = new Line(centerX, centerY, secondX, secondY);
         sLine.setStroke(Color.RED);
 
-        //»­·ÖÕë
-        double mLength = clockRadius * 0.65; //ÉèÖÃ·ÖÕëµÄ³¤¶È
+        //ç”»åˆ†é’ˆ
+        double mLength = clockRadius * 0.65; //è®¾ç½®åˆ†é’ˆçš„é•¿åº¦
         double minuteX = centerX + mLength * Math.sin(minute * 2 * Math.PI / 60.0);
         double minuteY = centerY - mLength * Math.cos(minute * 2 * Math.PI / 60.0);
         Line mLine = new Line(centerX, centerY, minuteX, minuteY);
         mLine.setStroke(Color.BLUE);
 
-        //»­Ê±Õë
-        double hLength = clockRadius * 0.5; //ÉèÖÃÊ±ÕëµÄ³¤¶È
+        //ç”»æ—¶é’ˆ
+        double hLength = clockRadius * 0.5; //è®¾ç½®æ—¶é’ˆçš„é•¿åº¦
         double hourX = centerX + hLength * Math.sin((hour % 12 + minute / 60.0) * 2 * Math.PI / 12);
         double hourY = centerY - hLength * Math.cos((hour % 12 + minute / 60.0) * 2 * Math.PI / 12);
         Line hLine = new Line(centerX, centerY, hourX, hourY);

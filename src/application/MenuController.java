@@ -1,4 +1,4 @@
-package application;
+ï»¿package application;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -47,7 +47,7 @@ public class MenuController {
 
     public void init2(MenuController controller, Stage stage){
 		this.stage = stage;
-	}																		//ÓÃÓÚ´°¿Ú×ª»»
+	}																		//ç”¨äºçª—å£è½¬æ¢
 
     @FXML
     private Button checkInfo;
@@ -62,7 +62,7 @@ public class MenuController {
     private Button dm;
     @FXML
     private void checkBtn(){
-    	//½øÈë²éÑ¯Ñ§ÉúĞÅÏ¢Ãæ°å
+    	//è¿›å…¥æŸ¥è¯¢å­¦ç”Ÿä¿¡æ¯é¢æ¿
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/CheckPane.fxml"));
             Parent conRoot = loader.load();
@@ -73,7 +73,7 @@ public class MenuController {
 
 
 
-            conStage.setTitle("²éÑ¯");
+            conStage.setTitle("æŸ¥è¯¢");
             conStage.setScene(new Scene(conRoot));
             conRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             conStage.show();
@@ -85,14 +85,14 @@ public class MenuController {
     @FXML
 
 	public void dmBtn() throws FileNotFoundException {
-        try {//½øÈëµãÃûÃæ°å
+        try {//è¿›å…¥ç‚¹åé¢æ¿
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/DmPage.fxml"));
             Parent conRoot = loader.load();
             Stage conStage = new Stage();
 
             DmMenu converController = loader.getController();
             converController.init(this, conStage);
-            conStage.setTitle("µãÃû·½Ê½");
+            conStage.setTitle("ç‚¹åæ–¹å¼");
             conStage.setScene(new Scene(conRoot));
             conRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             conStage.show();
@@ -101,7 +101,7 @@ public class MenuController {
             e.printStackTrace();
         }
     }
-/**   //´Ë´¦ÊÇÔ­±¾Ã»×öËæ»úµãÃûÊ±µÄË³ĞòµãÃû´úÂë
+/**   //æ­¤å¤„æ˜¯åŸæœ¬æ²¡åšéšæœºç‚¹åæ—¶çš„é¡ºåºç‚¹åä»£ç 
         int i = 0;
 		File Fl = new File("Number.txt");
         File fl = new File("Students.txt");
@@ -113,18 +113,18 @@ public class MenuController {
         pane.setHgap(20);
         pane.setVgap(10);
 
-        pane.add(new Label("´ÎĞò") , 0, 0);
-        pane.add(new Label("ĞÕÃû"), 1, 0);
-        pane.add(new Label("°à¼¶"), 2, 0);
-        pane.add(new Label("Ñ§ºÅ"), 3, 0);
-        pane.add(new Label("³É¼¨"), 4, 0);
-        pane.add(new Label("È±ÇÚÑ¡Ïî"), 5, 0);
-        pane.add(new Label("È±ÇÚ´ÎÊı"), 6, 0);
+        pane.add(new Label("æ¬¡åº") , 0, 0);
+        pane.add(new Label("å§“å"), 1, 0);
+        pane.add(new Label("ç­çº§"), 2, 0);
+        pane.add(new Label("å­¦å·"), 3, 0);
+        pane.add(new Label("æˆç»©"), 4, 0);
+        pane.add(new Label("ç¼ºå‹¤é€‰é¡¹"), 5, 0);
+        pane.add(new Label("ç¼ºå‹¤æ¬¡æ•°"), 6, 0);
         Student[] stu = new Student[i];
         Text[][] text = new Text[i][5];
         Button[] bt1= new Button[i];
         int j;
-        String[] Num=new String[i];//Ê¹ÓÃÊı×é´¢´æj£¬·ÀÖ¹Ñ­»·ºó±äÁ¿±»»ÙÃğ
+        String[] Num=new String[i];//ä½¿ç”¨æ•°ç»„å‚¨å­˜jï¼Œé˜²æ­¢å¾ªç¯åå˜é‡è¢«æ¯ç­
         try(Scanner Input = new Scanner(fl)){
 
             for(j =0; j <i;j++){
@@ -135,7 +135,7 @@ public class MenuController {
                 text[j][2] = new Text(stu[j].GetNumber());
                 text[j][3] = new Text("" + stu[j].GetScore());
                 text[j][4] = new Text("" + stu[j].GetAbsent());
-                bt1[j]=new Button("È±ÇÚ");
+                bt1[j]=new Button("ç¼ºå‹¤");
                 pane.add(new Label("" + j + 1), 0, j + 1);
                 pane.add(text[j][0], 1, j + 1);
                 pane.add(text[j][1], 2, j + 1);
@@ -185,7 +185,7 @@ public class MenuController {
 
 
 
-            conStage.setTitle("¹ÜÀí²Ëµ¥");
+            conStage.setTitle("ç®¡ç†èœå•");
             conStage.setScene(new Scene(conRoot));
             conRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
             conStage.show();
@@ -195,7 +195,7 @@ public class MenuController {
         }
     }
 
-    public static void onAbsent(String Number) throws FileNotFoundException, Exception {//ï¿½Ş¸ï¿½Ñ§ï¿½ï¿½4
+    public static void onAbsent(String Number) throws FileNotFoundException, Exception {//é”Ÿç«é©æ‹·å­¦é”Ÿæ–¤æ‹·4
         int i =0;
     	
     	File csv = new File("Students.csv");
@@ -243,7 +243,7 @@ public class MenuController {
 
 
 
-			conStage.setTitle("Ö÷²Ëµ¥");
+			conStage.setTitle("ä¸»èœå•");
 			conStage.setScene(new Scene(conRoot));
 			conRoot.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			conStage.show();
@@ -260,11 +260,11 @@ public class MenuController {
 
     	ClockPane clock = new ClockPane();
 
-        //½«clock·ÅÔÚpaneÀï
+        //å°†clockæ”¾åœ¨paneé‡Œ
         BorderPane pane = new BorderPane();
         pane.setCenter(clock);
 
-        //´´½¨Ò»¸öhandler
+        //åˆ›å»ºä¸€ä¸ªhandler
         EventHandler<ActionEvent> eventHandler = e -> {
             clock.setCurrentTime();
         };
@@ -276,11 +276,11 @@ public class MenuController {
 
         Scene scene= new Scene(pane, 250, 250);
         Stage Stage3 = new Stage();
-        Stage3.setTitle("Ê±ÖÓ");
+        Stage3.setTitle("æ—¶é’Ÿ");
         Stage3.setScene(scene);
         Stage3.show();
 
-        //ÈÃclock¸úËæ´°¿ÚµÄ±ä»¯¶ø±ä»¯
+        //è®©clockè·Ÿéšçª—å£çš„å˜åŒ–è€Œå˜åŒ–
         pane.widthProperty().addListener(ov -> clock.setW(pane.getWidth()));
         pane.heightProperty().addListener(ov -> clock.setH(pane.getHeight()));
     }

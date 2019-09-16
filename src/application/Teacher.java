@@ -1,8 +1,8 @@
-package application;
+锘縫ackage application;
 
 public class Teacher {
 
-	//建立教师类，属性为用户名及密码
+	//寤虹珛鏁欏笀绫伙紝灞炴�т负鐢ㄦ埛鍚嶅強瀵嗙爜
 	private String Username;
 	private String Password;
 
